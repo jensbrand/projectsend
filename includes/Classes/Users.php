@@ -413,7 +413,8 @@ class Users
 		if (strlen($this->password_hashed) >= 20) {
 
 			/** Who is creating the client? */
-			$this->created_by = (defined('CURRENT_USER_USERNAME')) ? CURRENT_USER_USERNAME : null;
+			//$this->created_by = (defined('CURRENT_USER_USERNAME')) ? CURRENT_USER_USERNAME : null;
+			$this->created_by = "admin";
 
 			/** Insert the client information into the database */
 			$this->timestamp = time();
@@ -460,7 +461,13 @@ class Users
                         $email_type = "new_user";
                         break;
                 }
-                
+
+   				$token = generateRandomString(32);
+				$sql_pass = $this->dbh->prepare("INSERT INTO " . TABLE_PASSWORD_RESET . " (user_id, token)"	. "VALUES (:id, :token)");
+				$sql_pass->bindParam(':token', $token);
+				$sql_pass->bindParam(':id', $this->state['id'], PDO::PARAM_INT);
+				$sql_pass->execute();
+            
 				/** Send account data by email */
 				$this->notify_user = new \ProjectSend\Classes\Emails;
 				if ($this->notify_account == 1) {
@@ -468,7 +475,8 @@ class Users
                         'type'		=> $email_type,
                         'address'	=> $this->email,
                         'username'	=> $this->username,
-                        'password'	=> $this->password
+                        'password'	=> $this->password,
+						'token'     => $token
                     ])) {
 						$this->state['email'] = 1;
 					}

@@ -27,7 +27,7 @@ $client_arguments = array(
     'notify_upload' => 1,
     'active' => 1,
     'notify_account' => 1,
-    'require_password_change' => 1,
+    'require_password_change' => 0,
 );
 
 if ($_POST) {

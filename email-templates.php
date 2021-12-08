@@ -230,11 +230,12 @@ if ($_POST) {
                                                                             'subject_text'		=> EMAIL_NEW_CLIENT_BY_USER_SUBJECT,
                                                                             'body_check'		=> EMAIL_NEW_CLIENT_BY_USER_CUSTOMIZE,
                                                                             'body_text'			=> EMAIL_NEW_CLIENT_BY_USER_TEXT,
-                                                                            'tags'				=> array(
-                                                                                                            '%USERNAME%'	=> __('The new username for this account','cftp_admin'),
-                                                                                                            '%PASSWORD%'	=> __('The new password for this account','cftp_admin'),
-                                                                                                            '%URI%'			=> __('The login link','cftp_admin') . $href_string,
-                                                                                                        ),
+																			'tags'				=> array(
+																											'%USERNAME%'	=> __('The new username for this account','cftp_admin'),
+																											'%PASSWORD%'	=> __('The new password for this account','cftp_admin'),
+																											'%URI%'			=> __('The login link','cftp_admin') . $href_string,
+																											'%URITOKEN%'	=> __('The login link with password-reset token','cftp_admin') . $href_string,
+																										),
                                                                             'default_text'		=> EMAIL_TEMPLATE_NEW_CLIENT,
                                                                         ),
                                             'new_client_self'		=> array(

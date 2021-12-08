@@ -136,7 +136,7 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                                                         array(
                                                             'sortable'		=> true,
                                                             'sort_url'		=> 'user_id',
-                                                            'content'		=> __('Client','cftp_admin'),
+                                                            'content'		=> __('Client/user','cftp_admin'),
                                                         ),
                                                         array(
                                                             'sortable'		=> true,

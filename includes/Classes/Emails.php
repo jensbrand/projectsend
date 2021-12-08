@@ -204,16 +204,16 @@ class Emails
 
 		return $body;
 	}
-
+	
 	/**
 	 * Prepare the body for the "New Client" e-mail.
 	 * The new username and password are also sent.
 	 */
-	private function email_new_client($username,$password)
+	private function email_new_client($username,$password,$token)
 	{
         $this->email_body = $this->email_prepare_body('new_client');
 		$this->email_body = str_replace(
-									array('%SUBJECT%','%BODY1%','%BODY2%','%BODY3%','%LBLUSER%','%LBLPASS%','%USERNAME%','%PASSWORD%','%URI%'),
+									array('%SUBJECT%','%BODY1%','%BODY2%','%BODY3%','%LBLUSER%','%LBLPASS%','%USERNAME%','%PASSWORD%','%URI%','%URITOKEN%'),
 									array(
 											$this->strings_new_client['subject'],
 											$this->strings_new_client['body'],
@@ -223,7 +223,8 @@ class Emails
 											$this->strings_new_client['label_pass'],
 											$username,
 											$password,
-											BASE_URI
+											BASE_URI,
+											BASE_URI.'reset-password.php?token=' . $token . '&user=' . $username,
 										),
 									$this->email_body
 								);
@@ -627,7 +628,7 @@ class Emails
 				}
 			break;
             case 'new_client':
-                $this->body_variables = [ $this->username, $this->password, ];
+                $this->body_variables = [ $this->username, $this->password,$this->token ];
 			break;
             case 'new_client_self':
                 $this->body_variables = [ $this->username, $this->name, $this->memberships ];
