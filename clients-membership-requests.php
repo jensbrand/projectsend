@@ -167,7 +167,7 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
             </div>
 
             <form action="<?php echo $this_page; ?>" name="requests_list" method="post" class="form-inline batch_actions">
-                <input type="hidden" name="csrf_token" value="<?php echo getCsrfToken(); ?>" />
+                <?php addCsrf(); ?>
                 <input type="hidden" name="denied" value="<?php echo (isset($_GET['denied']) && is_numeric($_GET['denied'])) ? $_GET['denied'] : 0; ?>" />
 
                 <?php form_add_existing_parameters(); ?>
@@ -198,7 +198,7 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                 <div class="clear"></div>
 
                 <div class="form_actions_count">
-                    <p><?php _e('Found','cftp_admin'); ?>: <span><?php echo $found_count; ?> <?php _e('requests','cftp_admin'); ?></span></p>
+                    <p><?php echo sprintf(__('Found %d elements','cftp_admin'), (int)$found_count); ?>
                 </div>
 
                 <div class="form_results_filter">

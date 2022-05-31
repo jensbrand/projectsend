@@ -25,8 +25,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ProjectSend\n"
-"POT-Creation-Date: 2021-12-08 10:48+0100\n"
-"PO-Revision-Date: 2021-12-08 10:54+0100\n"
+"POT-Creation-Date: 2022-05-31 10:37+0200\n"
+"PO-Revision-Date: 2022-05-31 11:59+0200\n"
 "Last-Translator: Olaf Landsinger <frankentux@mail.de>\n"
 "Language-Team: German (http://www.transifex.com/subwaydesign/projectsend/"
 "language/de/)\n"
@@ -52,15 +52,15 @@ msgstr ""
 msgid "Recent activities log"
 msgstr "Protokoll kürzlicher Aktivitäten"
 
-#: actions-log.php:39
+#: actions-log.php:36
 msgid "The selected activities were deleted."
 msgstr "Die ausgewählten Aktivitäten wurden gelöscht."
 
-#: actions-log.php:43
+#: actions-log.php:39
 msgid "Please select at least one activity."
 msgstr "Bitte wählen Sie mindestens eine Aktion."
 
-#: actions-log.php:55
+#: actions-log.php:50
 msgid ""
 "The log was cleared. Only data used for statistics remained. You can delete "
 "them manually if you want."
@@ -68,76 +68,73 @@ msgstr ""
 "Das Protokoll wurde geleert. Nur die Statistiken bleiben erhalten. Sie "
 "können diese manuell löschen wenn Sie möchten."
 
-#: actions-log.php:128
+#: actions-log.php:127
 msgid "Filter activities"
 msgstr "Aktivitäten filtern"
 
-#: actions-log.php:130 includes/widgets/actions-log.php:16
+#: actions-log.php:129 includes/widgets/actions-log.php:16
 msgid "All activities"
 msgstr "Alle Aktivitäten"
 
-#: actions-log.php:142 clients.php:153 manage-files.php:374
-#: manage-files.php:401 users.php:202
+#: actions-log.php:141 clients.php:153 manage-files.php:413
+#: manage-files.php:440 users.php:200
 msgid "Filter"
 msgstr "Filter"
 
-#: actions-log.php:153
+#: actions-log.php:152
 msgid "Activities actions"
 msgstr "Aktivitätsaktionen"
 
-#: actions-log.php:157 categories.php:197 clients-membership-requests.php:182
-#: clients-requests.php:232 clients.php:168 groups.php:154 manage-files.php:428
-#: users.php:217
+#: actions-log.php:156 categories.php:198 clients-membership-requests.php:182
+#: clients-requests.php:232 clients.php:168 cron-log.php:122 groups.php:155
+#: manage-files.php:467 users.php:215
 msgid "Select action"
 msgstr "Aktion wählen"
 
-#: actions-log.php:158
+#: actions-log.php:157 cron-log.php:123
 msgid "Download as csv"
 msgstr "Herunterladen als CSV"
 
-#: actions-log.php:159
+#: actions-log.php:158 cron-log.php:124
 msgid "Delete selected"
 msgstr "Ausgewähltes löschen"
 
-#: actions-log.php:160
+#: actions-log.php:159 cron-log.php:125
 msgid "Clear entire log"
 msgstr "Gesamten Log löschen"
 
-#: actions-log.php:170 categories.php:208 clients-membership-requests.php:194
-#: clients-requests.php:244 clients.php:181 groups.php:165 manage-files.php:459
-#: users.php:230
+#: actions-log.php:169 categories.php:209 clients-membership-requests.php:194
+#: clients-requests.php:244 clients.php:181 cron-log.php:135 groups.php:166
+#: manage-files.php:498 users.php:228
 msgid "Proceed"
 msgstr "Fortfahren"
 
-#: actions-log.php:177 categories.php:216 clients-membership-requests.php:201
-#: clients-requests.php:251 clients.php:188 groups.php:172 manage-files.php:467
-#: users.php:237
-msgid "Found"
-msgstr "Gefunden"
+#: actions-log.php:176 categories.php:217 clients-membership-requests.php:201
+#: clients-requests.php:251 clients.php:188 cron-log.php:142 groups.php:173
+#: import-orphans.php:101 manage-files.php:506 users.php:235
+#, php-format
+msgid "Found %d elements"
+msgstr "%d Elemente gefunden"
 
-#: actions-log.php:177
-msgid "activities"
-msgstr "Aktivitäten"
-
-#: actions-log.php:187 clients-membership-requests.php:236
-#: clients-requests.php:286 clients.php:201 groups.php:185 manage-files.php:483
-#: users.php:249
+#: actions-log.php:186 clients-membership-requests.php:236
+#: clients-requests.php:286 clients.php:201 groups.php:186 manage-files.php:522
+#: users.php:247
 msgid "The filters you selected returned no results."
 msgstr "Die gewählten Filter lieferten keine Ergebnisse."
 
-#: actions-log.php:192
+#: actions-log.php:191
 msgid "There are no activities recorded."
 msgstr "Keine Aktivitäten aufgezeichnet."
 
-#: actions-log.php:219 download-information.php:131
+#: actions-log.php:218 cron-log.php:179 download-information.php:131
 msgid "Date"
 msgstr "Datum"
 
-#: actions-log.php:224
+#: actions-log.php:223 templates.php:75
 msgid "Author"
 msgstr "Autor"
 
-#: actions-log.php:229
+#: actions-log.php:228
 msgid "Activity"
 msgstr "Aktivität"
 
@@ -145,95 +142,91 @@ msgstr "Aktivität"
 msgid "Categories administration"
 msgstr "Kategorieverwaltung"
 
-#: categories.php:27
+#: categories.php:28
 msgid "The category was successfully created."
 msgstr "Die Kategorie wurde erfolgreich erstellt."
 
-#: categories.php:31
+#: categories.php:32
 msgid "The category was successfully edited."
 msgstr "Die Kategorie wurde erfolgreich bearbeitet."
 
-#: categories.php:53
+#: categories.php:54
 msgid "Please select at least one category."
 msgstr "Bitte wählen Sie mindestens eine Kategorie."
 
-#: categories.php:65
+#: categories.php:64
 msgid "The selected categories were deleted."
 msgstr "Die ausgewählten Kategorien wurden gelöscht."
 
-#: categories.php:105
+#: categories.php:106
 msgid "Create new category"
 msgstr "Neue Kategorie erstellen"
 
-#: categories.php:115
+#: categories.php:116
 msgid "Edit category"
 msgstr "Kategorie bearbeiten"
 
-#: categories.php:160
+#: categories.php:161
 msgid "There was a problem saving to the database."
 msgstr "Es gab ein Problem beim Speichern in die Datenbank."
 
-#: categories.php:165
+#: categories.php:166
 msgid "Please complete all the required fields."
 msgstr "Bitte füllen Sie alle erforderlichen Felder aus."
 
-#: categories.php:193
+#: categories.php:194
 msgid "Selected categories actions"
 msgstr "Aktionen für die ausgewählten Kategorien"
 
-#: categories.php:198 clients.php:171 groups.php:155 manage-files.php:448
-#: users.php:220
+#: categories.php:199 clients.php:171 groups.php:156 manage-files.php:487
+#: users.php:218
 msgid "Delete"
 msgstr "Löschen"
 
-#: categories.php:216
-msgid "categories"
-msgstr "Kategorien"
-
-#: categories.php:226 clients-membership-requests.php:233
-#: clients-requests.php:283 clients.php:198 groups.php:182
-#: import-orphans.php:277 manage-files.php:477 users.php:246
+#: categories.php:227 clients-membership-requests.php:233
+#: clients-requests.php:283 clients.php:198 groups.php:183
+#: import-orphans.php:245 manage-files.php:516 users.php:244
 msgid "Your search keywords returned no results."
 msgstr "Ihre Suchbegriffe ergaben keine Treffer."
 
-#: categories.php:231
+#: categories.php:232
 msgid "There are no categories yet."
 msgstr "Derzeit gibt es keine Kategorien."
 
-#: categories.php:255 includes/forms/categories.php:37
+#: categories.php:256 includes/forms/categories.php:37
 #: includes/forms/clients.php:76 includes/forms/options/email.php:11
 #: includes/forms/users.php:37
 msgid "Name"
 msgstr "Name"
 
-#: categories.php:258 clients.php:395 groups.php:241 groups.php:331
+#: categories.php:259 clients.php:395 groups.php:242 groups.php:332
 #: includes/forms/options/clients.php:70 includes/main-menu.php:71
-#: install/make-config.php:329
+#: includes/widgets/counters.php:32 install/make-config.php:327
 msgid "Files"
 msgstr "Dateien"
 
-#: categories.php:261 files-edit.php:94 groups.php:234
+#: categories.php:262 files-edit.php:119 groups.php:235
 #: includes/forms/categories.php:59 includes/forms/file_editor.php:43
-#: includes/forms/groups.php:33 manage-files.php:553
+#: includes/forms/groups.php:33 manage-files.php:592
 msgid "Description"
 msgstr "Beschreibung"
 
-#: categories.php:265 clients.php:284 groups.php:256
+#: categories.php:266 clients.php:284 groups.php:257
 msgid "View"
 msgstr "Ansicht"
 
-#: categories.php:269 clients.php:288 files-edit.php:103 groups.php:260
-#: import-orphans.php:217 manage-files.php:602 users.php:314
+#: categories.php:270 clients.php:288 cron-log.php:118 files-edit.php:128
+#: groups.php:261 import-orphans.php:180 manage-files.php:641 users.php:312
 msgid "Actions"
 msgstr "Aktionen"
 
-#: categories.php:340 includes/main-menu.php:83 includes/main-menu.php:328
+#: categories.php:341 includes/main-menu.php:83 includes/main-menu.php:340
 #: manage-files.php:13
 msgid "Manage files"
 msgstr "Dateien verwalten"
 
-#: categories.php:343 clients.php:401 groups.php:335 manage-files.php:429
-#: manage-files.php:794 users.php:376
+#: categories.php:344 clients.php:401 groups.php:336 manage-files.php:468
+#: manage-files.php:833 users.php:374
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -242,7 +235,7 @@ msgid "Add client"
 msgstr "Kunde hinzufügen"
 
 #: clients-add.php:106 clients-edit.php:168 email-templates.php:177
-#: groups-add.php:62 groups-edit.php:92 options.php:269 register.php:130
+#: groups-add.php:62 groups-edit.php:92 options.php:284 register.php:125
 #: templates.php:26 users-add.php:90 users-edit.php:159
 msgid "There was an error. Please try again."
 msgstr "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
@@ -260,7 +253,7 @@ msgid "Client edited correctly."
 msgstr "Kunde erfolgreich bearbeitet."
 
 #: clients-edit.php:163
-msgid "Client created successfuly."
+msgid "Client created successfully."
 msgstr "Kunde erfolgreich erstellt."
 
 #: clients-edit.php:180 users-edit.php:171
@@ -274,7 +267,7 @@ msgstr ""
 "Eine Willkommensnachricht inklusive Anmeldeinformationen wurde an den neuen "
 "Systembenutzer gesendet."
 
-#: clients-edit.php:188 register.php:154 users-edit.php:179
+#: clients-edit.php:188 register.php:149 users-edit.php:179
 msgid "E-mail notification couldn't be sent."
 msgstr "E-Mail Benachrichtigung konnte nicht gesendet werden."
 
@@ -307,7 +300,7 @@ msgstr "Die gewählten Aktionen wurden angewendet."
 msgid "The selected requests were deleted."
 msgstr "Die ausgewählten Anfragen wurden gelöscht."
 
-#: clients-membership-requests.php:97 clients-requests.php:154 clients.php:73
+#: clients-membership-requests.php:97 clients-requests.php:154 clients.php:69
 msgid "Please select at least one client."
 msgstr "Bitte wählen Sie mindestens einen Kunden."
 
@@ -323,10 +316,6 @@ msgstr "Auswahl anwenden"
 msgid "Delete requests"
 msgstr "Anfrage löschen"
 
-#: clients-membership-requests.php:201 clients-requests.php:251
-msgid "requests"
-msgstr "Anfrage"
-
 #: clients-membership-requests.php:208
 msgid "New requests"
 msgstr "Neue Anfragen"
@@ -341,20 +330,20 @@ msgstr "Es sind keine Anfragen im Moment"
 
 #: clients-membership-requests.php:279 clients-requests.php:327 clients.php:238
 #: includes/Classes/Emails.php:68 includes/Classes/Emails.php:127
-#: install/index.php:263 users.php:282
+#: install/index.php:224 users.php:280
 msgid "Full name"
 msgstr "Vollständiger Name"
 
 #: clients-membership-requests.php:284 clients-requests.php:332 clients.php:243
 #: includes/forms/clients.php:83 includes/forms/users.php:44
-#: install/index.php:277 users.php:287
+#: install/index.php:238 users.php:285
 msgid "Log in username"
 msgstr "Benutzername für Anmeldung"
 
 #: clients-membership-requests.php:290 clients-requests.php:338 clients.php:249
 #: includes/forms/clients.php:104 includes/forms/login-ldap.php:6
 #: includes/forms/login.php:15 includes/forms/reset-password/enter-email.php:7
-#: includes/forms/users.php:65 users.php:293
+#: includes/forms/users.php:65 users.php:291
 msgid "E-mail"
 msgstr "E-Mail"
 
@@ -370,7 +359,7 @@ msgstr "Alle ablehnen"
 msgid "Account requests"
 msgstr "Kontoanforderungen"
 
-#: clients-requests.php:30 clients.php:67
+#: clients-requests.php:30 clients.php:64
 msgid "The selected clients were deleted."
 msgstr "Die ausgewählen Kunden wurden gelöscht."
 
@@ -390,7 +379,7 @@ msgstr "Konto abgelehnt"
 msgid "Account"
 msgstr "Konto"
 
-#: clients-requests.php:359 manage-files.php:538
+#: clients-requests.php:359 manage-files.php:577
 msgid "Added on"
 msgstr "Hinzugefügt am"
 
@@ -398,43 +387,39 @@ msgstr "Hinzugefügt am"
 msgid "Clients Administration"
 msgstr "Kunden Administration"
 
-#: clients.php:41
+#: clients.php:40
 msgid "The selected clients were marked as active."
 msgstr "Die ausgewählten Kunden wurden als aktiv markiert."
 
-#: clients.php:56
+#: clients.php:54
 msgid "The selected clients were marked as inactive."
 msgstr "Die ausgewählten Kunden wurden als inaktiv markiert."
 
-#: clients.php:141 manage-files.php:388 users.php:190
+#: clients.php:141 manage-files.php:427 users.php:188
 msgid "All statuses"
 msgstr "Alle Statuse"
 
-#: clients.php:142 clients.php:330 templates.php:90 users.php:191 users.php:335
+#: clients.php:142 clients.php:330 templates.php:90 users.php:189 users.php:333
 msgid "Active"
 msgstr "Aktiv"
 
-#: clients.php:143 clients.php:330 users.php:192 users.php:335
+#: clients.php:143 clients.php:330 users.php:190 users.php:333
 msgid "Inactive"
 msgstr "Inaktiv"
 
-#: clients.php:169 templates.php:97 users.php:218
+#: clients.php:169 templates.php:97 users.php:216
 msgid "Activate"
 msgstr "Aktivieren"
 
-#: clients.php:170 users.php:219
+#: clients.php:170 users.php:217
 msgid "Deactivate"
 msgstr "Deaktivieren"
-
-#: clients.php:188
-msgid "clients"
-msgstr "Kunden"
 
 #: clients.php:206
 msgid "There are no clients at the moment"
 msgstr "Keine Kunden"
 
-#: clients.php:231 groups.php:222 users.php:276
+#: clients.php:231 groups.php:223 users.php:274
 msgid "Created"
 msgstr "Erstellt"
 
@@ -450,7 +435,7 @@ msgstr "Dateien: Direkt"
 msgid "Files: Groups"
 msgstr "Dateien: Gruppen"
 
-#: clients.php:267 manage-files.php:583 users.php:305
+#: clients.php:267 manage-files.php:622 users.php:303
 msgid "Status"
 msgstr "Status"
 
@@ -462,32 +447,60 @@ msgstr "In Gruppen"
 msgid "Notify"
 msgstr "Benachrichtigen"
 
-#: clients.php:280 users.php:310
+#: clients.php:280 users.php:308
 msgid "Max. upload size"
 msgstr "Maximale Uploadgrösse"
 
 #: clients.php:388 download-information.php:197
-#: includes/forms/options/external_login.php:101 manage-files.php:651
+#: includes/forms/options/external_login.php:101 manage-files.php:690
 msgid "Yes"
 msgstr "Ja"
 
 #: clients.php:388 download-information.php:198
-#: includes/forms/options/external_login.php:102 manage-files.php:651
+#: includes/forms/options/external_login.php:102 manage-files.php:690
 msgid "No"
 msgstr "Nein"
 
-#: clients.php:391 users.php:372
+#: clients.php:391 users.php:370
 msgid "Default"
 msgstr "Standard"
 
 #: clients.php:396 includes/forms/clients.php:23 includes/forms/clients.php:35
-#: includes/forms/file_editor.php:139
+#: includes/forms/file_editor.php:139 includes/widgets/counters.php:47
 msgid "Groups"
 msgstr "Gruppen"
 
 #: clients.php:397
 msgid "As client"
 msgstr "Als Kunde"
+
+#: cron-log.php:14
+msgid "Cron execution log"
+msgstr "Cron Aktionsprotokoll"
+
+#: cron-log.php:36
+msgid "The selected entries were deleted."
+msgstr "Die ausgewählten Kunden wurden gelöscht."
+
+#: cron-log.php:39
+msgid "Please select at least one entries."
+msgstr "Bitte wählen Sie mindestens einen Kunden."
+
+#: cron-log.php:47
+msgid "The log was cleared."
+msgstr "Das Log wurde geleert."
+
+#: cron-log.php:152
+msgid "There are no executions recorded."
+msgstr "Keine Aktivitäten aufgezeichnet."
+
+#: cron-log.php:184
+msgid "SAPI"
+msgstr "SAPI"
+
+#: cron-log.php:189
+msgid "Results"
+msgstr "Ergebnisse"
 
 #: dashboard.php:10 includes/main-menu.php:59
 msgid "Dashboard"
@@ -505,7 +518,7 @@ msgstr "Es wurde keine Datei ausgewählt."
 msgid "There is no information with that file ID number."
 msgstr "Es gibt keine Informationen über dieser Datei ID Nummer."
 
-#: download-information.php:76 manage-files.php:597
+#: download-information.php:76 manage-files.php:636
 msgid "Total downloads"
 msgstr "Downloads insgesamt"
 
@@ -541,64 +554,64 @@ msgstr "Gesamte Öffentliche Downloads"
 msgid "File information"
 msgstr "Datei-Information"
 
-#: download.php:107
+#: download.php:104
 msgid "Download file"
 msgstr "Datei downloaden"
 
-#: download.php:119 public.php:295 register.php:172 reset-password.php:271
+#: download.php:116 public.php:295 register.php:167 reset-password.php:273
 msgid "Go back to the homepage."
 msgstr "Gehe zurück zur Homepage."
 
-#: email-preview.php:11 includes/main-menu.php:237
+#: email-preview.php:11 includes/main-menu.php:241
 msgid "E-mail templates"
 msgstr "E-Mail Vorlagen"
 
-#: email-preview.php:11 manage-files.php:531 manage-files.php:637
+#: email-preview.php:11 manage-files.php:570 manage-files.php:676
 msgid "Preview"
 msgstr "Vorschau"
 
-#: email-templates.php:32 includes/main-menu.php:242
+#: email-templates.php:32 includes/main-menu.php:246
 msgid "Header / footer"
 msgstr "Kopfbereich/Fussbereich"
 
-#: email-templates.php:38 includes/main-menu.php:246
+#: email-templates.php:38 includes/main-menu.php:250
 msgid "New file by user"
 msgstr "Neue Datei vom Benuzter"
 
-#: email-templates.php:45 includes/main-menu.php:250
+#: email-templates.php:45 includes/main-menu.php:254
 msgid "New file by client"
 msgstr "Neue Datei von Kunde"
 
-#: email-templates.php:52 includes/main-menu.php:254
+#: email-templates.php:52 includes/main-menu.php:258
 msgid "New client (welcome)"
 msgstr "Willkommensmail für neue Kunden"
 
-#: email-templates.php:59 includes/main-menu.php:258
+#: email-templates.php:59 includes/main-menu.php:262
 msgid "New client (self-registered)"
 msgstr "Kunde hat sich selbst registriert"
 
-#: email-templates.php:66 includes/main-menu.php:262
+#: email-templates.php:66 includes/main-menu.php:266
 msgid "Approve client account"
 msgstr "Kundenkonto freigegeben"
 
-#: email-templates.php:73 includes/main-menu.php:266
+#: email-templates.php:73 includes/main-menu.php:270
 msgid "Deny client account"
 msgstr "Kundenkonto abgelehnt"
 
-#: email-templates.php:80 includes/main-menu.php:274
+#: email-templates.php:80 includes/main-menu.php:278
 msgid "New user (welcome)"
 msgstr "Willkommensmail für neue Systembenutzer"
 
-#: email-templates.php:87 includes/main-menu.php:278
+#: email-templates.php:87 includes/main-menu.php:282
 msgid "Password reset"
 msgstr "Passwort zurücksetzen"
 
-#: email-templates.php:94 includes/main-menu.php:270
+#: email-templates.php:94 includes/main-menu.php:274
 msgid "Client updated memberships"
 msgstr "Kunde hat Mitgliedschaft aktualisiert"
 
-#: email-templates.php:173 options.php:98 options.php:265 templates.php:24
-msgid "Options updated succesfuly."
+#: email-templates.php:173 options.php:110 options.php:280 templates.php:24
+msgid "Options updated successfully."
 msgstr "Einstellungen erfolgreich aktualisiert."
 
 #: email-templates.php:188
@@ -608,7 +621,7 @@ msgstr "(kann als ein href auf einem Link Tag verwendet werden)"
 #: email-templates.php:196
 msgid ""
 "This email will be sent to a client whenever a new file has been assigned to "
-"his account."
+"their account."
 msgstr ""
 "Diese E-Mail wird einem Kunden gesendet, sobald eine neue Datei seinem "
 "Account zugeordnet wurde."
@@ -634,7 +647,7 @@ msgstr ""
 #: email-templates.php:228
 msgid ""
 "This email will be sent to the new client after an administrator has created "
-"his new account. It would be best to include the log in details (username "
+"their new account. It would be best to include the log in details (username "
 "and password)."
 msgstr ""
 "Diese E-Mail wird einem neuen Kunden gesendet, sobald der Administrator "
@@ -701,7 +714,7 @@ msgstr ""
 #: email-templates.php:295
 msgid ""
 "This email will be sent to the new system user after an administrator has "
-"created his new account. It would be best to include the log in details "
+"created their new account. It would be best to include the log in details "
 "(username and password)."
 msgstr ""
 "Diese E-Mail wird einem neuen Systembenutzer gesendet, nachdem der "
@@ -732,8 +745,8 @@ msgstr "Link, um den Prozeß fortzusetzen"
 
 #: email-templates.php:329
 msgid ""
-"This email will be sent to the system administrator when a client edits his "
-"account and changes the public groups membership requests."
+"This email will be sent to the system administrator when a client edits "
+"their account and changes the public groups membership requests."
 msgstr ""
 "Diese E-Mail wird an den Systemadministrator gesendet, wenn ein Kunde sein "
 "Konto bearbeitet und die Anforderungen für die Mitgliedschaft in "
@@ -809,11 +822,11 @@ msgstr ""
 "Bevor Sie diese Funktion ausprobieren, speichern Sie bitte Ihre Änderungen "
 "um diese in der Vorschau anzusehen."
 
-#: email-templates.php:467 options.php:322
+#: email-templates.php:467 options.php:337
 msgid "Save options"
 msgstr "Einstellungen speichern"
 
-#: email-test.php:12 includes/main-menu.php:299
+#: email-test.php:12 includes/main-menu.php:307
 msgid "Test email configuration"
 msgstr "Test E-Mail-Konfiguration"
 
@@ -881,36 +894,59 @@ msgstr "Kann die Datenbank nicht verbinden"
 msgid "Edit files"
 msgstr "Datei ändern"
 
-#: files-edit.php:88
+#: files-edit.php:75 files-edit.php:86
+#: includes/upload-send-notifications.php:243
+#: includes/upload-send-notifications.php:277
+msgid "E-mail notifications have been sent."
+msgstr "E-Mail Benachrichtigung wurde versendet."
+
+#: files-edit.php:78 includes/upload-send-notifications.php:257
+msgid "One or more notifications couldn't be sent."
+msgstr "Eine oder mehrere Benachrichtigungen konnten nich gesendet werden."
+
+#: files-edit.php:88 includes/upload-send-notifications.php:281
+msgid "E-mail notifications for inactive clients were not sent."
+msgstr "E-Mail Benachrichtigung für inaktive Kunden wurde nicht gesendet."
+
+#: files-edit.php:92
+msgid ""
+"E-mail notifications were not sent according to your settings. Make sure you "
+"have a cron job enabled if you need to send them."
+msgstr ""
+"Die E-Mail-Benachrichtigungen wurden nicht gemäß Ihren Einstellungen "
+"gesendet. Vergewissern Sie sich, dass Sie einen Cron-Job aktiviert haben, "
+"wenn Sie sie senden müssen."
+
+#: files-edit.php:113
 msgid "Files saved correctly"
 msgstr "Dateien erfolgreich gespeichert"
 
-#: files-edit.php:93 includes/forms/file_editor.php:38 manage-files.php:548
+#: files-edit.php:118 includes/forms/file_editor.php:38 manage-files.php:587
 msgid "Title"
 msgstr "Titel"
 
-#: files-edit.php:95
+#: files-edit.php:120
 msgid "File Name"
 msgstr "Dateiname"
 
-#: files-edit.php:99 files-edit.php:132 groups.php:247 groups.php:291
+#: files-edit.php:124 files-edit.php:157 groups.php:248 groups.php:292
 #: includes/forms/groups.php:74
 msgid "Public"
 msgstr "Öffentlch"
 
-#: files-edit.php:133 groups.php:296
+#: files-edit.php:158 groups.php:297
 msgid "Private"
 msgstr "Privat"
 
-#: files-edit.php:143
+#: files-edit.php:168
 msgid "Edit file"
 msgstr "Datei bearbeiten"
 
-#: files-edit.php:151 includes/main-menu.php:338
+#: files-edit.php:176 includes/main-menu.php:350
 msgid "View my files"
 msgstr "Eigene Dateien ansehen"
 
-#: files-edit.php:170
+#: files-edit.php:195
 msgid ""
 "You can skip assigning if you want. The files are retained and you may add "
 "them to clients or groups later."
@@ -918,10 +954,6 @@ msgstr ""
 "Sie können die Zuordnung überspringen wenn Sie wollen. Die Dateien bleiben "
 "erhalten und Sie können diese zu einem späteren Zeitpunkt Kunden oder "
 "Gruppen zuweisen."
-
-#: footer.php:24
-msgid "Executed queries"
-msgstr "Ausgeführte Anfragen"
 
 #: groups-add.php:14
 msgid "Add clients group"
@@ -936,7 +968,7 @@ msgid "Group edited correctly."
 msgstr "Gruppe erfolgreich berabeitet."
 
 #: groups-edit.php:86
-msgid "Group created successfuly."
+msgid "Group created successfully."
 msgstr "Gruppe erfolgreich erstellt."
 
 #: groups-edit.php:107
@@ -951,55 +983,51 @@ msgstr "Keine Gruppe mit dieser ID."
 msgid "Groups administration"
 msgstr "Gruppen Administration"
 
-#: groups.php:23
+#: groups.php:25
 msgid "Groups where"
 msgstr "Gruppen wo"
 
-#: groups.php:23
+#: groups.php:25
 msgid "is member"
 msgstr "ist Mitglied"
 
-#: groups.php:70
+#: groups.php:65
 msgid "The selected groups were deleted."
 msgstr "Die ausgewählten Gruppen wurden gelöscht."
 
-#: groups.php:77
+#: groups.php:71
 msgid "Please select at least one group."
 msgstr "Bitte wählen Sie mindestens eine Gruppe."
 
-#: groups.php:150
+#: groups.php:151
 msgid "Selected groups actions"
 msgstr "Aktionen für die ausgewählten Gruppen"
 
-#: groups.php:172
-msgid "groups"
-msgstr "Gruppen"
-
-#: groups.php:188
+#: groups.php:189
 msgid "The client does not exist."
 msgstr "Der Kunde existiert nicht."
 
-#: groups.php:191
+#: groups.php:192
 msgid "There are no groups where this client is member."
 msgstr "Keine Gruppen, in denen dieser Kunde Mitglied ist."
 
-#: groups.php:196
+#: groups.php:197
 msgid "There are no groups created yet."
 msgstr "Keine Gruppen."
 
-#: groups.php:229 includes/forms/groups.php:26
+#: groups.php:230 includes/forms/groups.php:26
 msgid "Group name"
 msgstr "Gruppenname"
 
-#: groups.php:238 includes/forms/groups.php:40
+#: groups.php:239 includes/forms/groups.php:40
 msgid "Members"
 msgstr "Mitglieder"
 
-#: groups.php:252
+#: groups.php:253
 msgid "Created by"
 msgstr "Erstellt von"
 
-#: groups.php:364
+#: groups.php:365
 msgid ""
 "There are public groups, but the public page is disabled so the public links "
 "will not show anything."
@@ -1007,9 +1035,13 @@ msgstr ""
 "Es gibt öffentliche Gruppen, aber die öffentliche Seite ist deaktiviert, so "
 "dass die öffentlichen Links nichts anzeigen."
 
-#: groups.php:365 includes/forms/groups.php:79
+#: groups.php:366 includes/forms/groups.php:79
 msgid "Go to privacy options"
 msgstr "Öffnen Sie die Privatsphäre-Einstellungen"
+
+#: header-unlogged.php:15 install/index.php:259
+msgid "Install"
+msgstr "Installieren"
 
 #: header-unlogged.php:20
 msgid "setup"
@@ -1019,28 +1051,36 @@ msgstr "Einstellungen"
 msgid "System Administration"
 msgstr "Systemverwaltung"
 
-#: header.php:72
-msgid "Toogle menu"
+#: header.php:76
+msgid "Toggle menu"
 msgstr "Menüanzeige umschalten"
 
-#: header.php:86 includes/forms/login-ldap.php:16 includes/forms/login.php:25
-#: includes/forms/options/general.php:79 install/make-config.php:317
+#: header.php:91 includes/forms/login-ldap.php:16 includes/forms/login.php:25
+#: includes/forms/options/general.php:82 install/make-config.php:315
 msgid "Language"
 msgstr "Sprache"
 
-#: header.php:105
+#: header.php:110
 msgid "My Account"
 msgstr "Mein Konto"
 
-#: header.php:108
+#: header.php:113
 msgid "Logout"
 msgstr "Abmelden"
 
-#: import-orphans.php:18 includes/main-menu.php:87
+#: import-orphans.php:19 includes/main-menu.php:87
 msgid "Find orphan files"
-msgstr "Finden verwaisten Dateien"
+msgstr "Finde verwaiste Dateien"
 
-#: import-orphans.php:25
+#: import-orphans.php:108
+msgid "Allowed"
+msgstr "Erlaubt"
+
+#: import-orphans.php:113
+msgid "Not allowed"
+msgstr "Nicht erlaubt"
+
+#: import-orphans.php:139
 msgid ""
 "This list only shows the files that are allowed according to your security "
 "settings. If the file type you need to add is not listed here, add the "
@@ -1051,279 +1091,275 @@ msgstr ""
 "aufgelistet ist, fügen Sie die Erweiterung zur Box \"Erlaubte Datei-"
 "Erweiterungen\" auf dieser Seite hinzu."
 
-#: import-orphans.php:162
-msgid "Showing"
-msgstr "Angezeigt"
-
-#: import-orphans.php:162 manage-files.php:467
-msgid "files"
-msgstr "Dateien"
-
-#: import-orphans.php:177
+#: import-orphans.php:140
 msgid "The following files can be imported"
 msgstr "Die folgenden Dateien können importiert werden"
 
-#: import-orphans.php:197
+#: import-orphans.php:160
 msgid "File name"
 msgstr "Dateiname"
 
-#: import-orphans.php:203
+#: import-orphans.php:166
 msgid "File size"
 msgstr "Dateigrösse"
 
-#: import-orphans.php:210
+#: import-orphans.php:173
 msgid "Last modified"
 msgstr "Zuletzt geändert"
 
-#: import-orphans.php:248
+#: import-orphans.php:214
 msgid "Import"
 msgstr "Import"
 
-#: import-orphans.php:261 includes/Classes/TableGenerate.php:274
+#: import-orphans.php:228 includes/Classes/TableGenerate.php:275
 msgid "Results navigation"
 msgstr "Ergebnisse Navigation"
 
-#: import-orphans.php:267
+#: import-orphans.php:234
 msgid "Import selected files"
 msgstr "Ausgewählte Dateien importieren"
 
-#: import-orphans.php:282
+#: import-orphans.php:250
 msgid "There are no files available to add right now."
-msgstr "Keine Dateien zum hinzufügen verfügbar."
+msgstr "Keine Dateien zum Hinzufügen verfügbar."
 
-#: import-orphans.php:283
+#: import-orphans.php:251
 msgid "To use this feature you need to upload your files via FTP to the folder"
 msgstr ""
 "Um dieses Feature zu nutzen müssen Sie Ihre Dateien via FTP auf den Ordner "
 "hochladen"
 
-#: includes/Classes/ActionsLog.php:41
+#: includes/Classes/ActionsLog.php:37
 msgid "Account logs in through the form"
 msgstr "Konto hat sich via dem Anmeldeformular angemeldet"
 
-#: includes/Classes/ActionsLog.php:43
+#: includes/Classes/ActionsLog.php:39
 msgid "Account (user or client) logs out"
 msgstr "Konto (Systembenutzer oder Kunde) meldet sich ab"
 
-#: includes/Classes/ActionsLog.php:44
+#: includes/Classes/ActionsLog.php:40
 msgid "A user creates a new user account"
 msgstr "Ein Systembenutzer erstellt ein neues Systembenutzerkonto"
 
-#: includes/Classes/ActionsLog.php:45
+#: includes/Classes/ActionsLog.php:41
 msgid "A user creates a new client account"
 msgstr "Ein Systembenutzer hat ein neues Kundenkonto erstellt"
 
-#: includes/Classes/ActionsLog.php:46
+#: includes/Classes/ActionsLog.php:42
 msgid "A client registers an account for himself"
 msgstr "Ein Kunde hat ein Konto für sich selbst registriert"
 
-#: includes/Classes/ActionsLog.php:47
+#: includes/Classes/ActionsLog.php:43
 msgid "A client registers using a social profile"
 msgstr "Ein Kunde hat sich mit einem Social-Account registriert"
 
-#: includes/Classes/ActionsLog.php:48
+#: includes/Classes/ActionsLog.php:44
 msgid "Account logged in using a social profile"
 msgstr "Konto hat sich mit via Social-Account angemeldet"
 
-#: includes/Classes/ActionsLog.php:49
+#: includes/Classes/ActionsLog.php:45
 msgid "A file is uploaded by an user"
 msgstr "Eine Datei wurde von einem Systembenutzer hochgeladen"
 
-#: includes/Classes/ActionsLog.php:50
+#: includes/Classes/ActionsLog.php:46
 msgid "A file is uploaded by a client"
 msgstr "Eine Datei wurde von einem Kunden hochgeladen"
 
-#: includes/Classes/ActionsLog.php:51
+#: includes/Classes/ActionsLog.php:47
 msgid "A file is downloaded by a user"
 msgstr "Eine Datei wurde durch einen Systembenutzer heruntergeladen"
 
-#: includes/Classes/ActionsLog.php:52
+#: includes/Classes/ActionsLog.php:48
 msgid "A file is downloaded by a client"
 msgstr "Eine Datei wurde von einem Kunden heruntergeladen"
 
-#: includes/Classes/ActionsLog.php:53
+#: includes/Classes/ActionsLog.php:49
 msgid "An anonymous user downloaded a public file"
 msgstr "Ein anonymer Benutzer hat eine öffentliche Datei heruntergeladen"
 
-#: includes/Classes/ActionsLog.php:54
+#: includes/Classes/ActionsLog.php:50
 msgid "A zip file was generated"
 msgstr "Eine Zip-Datei wurde erstellt"
 
-#: includes/Classes/ActionsLog.php:55
+#: includes/Classes/ActionsLog.php:51
 msgid "A file has been unassigned from a client"
 msgstr "Die Zuweisung einer Datei zu einem Kunden wurde entzogen"
 
-#: includes/Classes/ActionsLog.php:56
+#: includes/Classes/ActionsLog.php:52
 msgid "A file has been unassigned from a group"
 msgstr "Die Gruppenzuweisung einer Datei wurde entfernt"
 
-#: includes/Classes/ActionsLog.php:57
+#: includes/Classes/ActionsLog.php:53
 msgid "A file has been deleted"
 msgstr "Eine Datei wurde gelöscht"
 
-#: includes/Classes/ActionsLog.php:58
+#: includes/Classes/ActionsLog.php:54
 msgid "A user was edited"
 msgstr "Ein Systembenutzer wurde bearbeitet"
 
-#: includes/Classes/ActionsLog.php:59
+#: includes/Classes/ActionsLog.php:55
 msgid "A client was edited"
 msgstr "Ein Kunde wurde bearbeitet"
 
-#: includes/Classes/ActionsLog.php:60
+#: includes/Classes/ActionsLog.php:56
 msgid "A group was edited"
 msgstr "Eine Gruppe wurde bearbeitet"
 
-#: includes/Classes/ActionsLog.php:61
+#: includes/Classes/ActionsLog.php:57
 msgid "A user was deleted"
 msgstr "Ein Systembenutzer wurde gelöscht"
 
-#: includes/Classes/ActionsLog.php:62
+#: includes/Classes/ActionsLog.php:58
 msgid "A client was deleted"
 msgstr "Ein Kunde wurde gelöscht"
 
-#: includes/Classes/ActionsLog.php:63
+#: includes/Classes/ActionsLog.php:59
 msgid "A group was deleted"
 msgstr "Eine Gruppe wurde gelöscht"
 
-#: includes/Classes/ActionsLog.php:64
+#: includes/Classes/ActionsLog.php:60
 msgid "A user account was marked as active"
 msgstr "Ein Systembenutzerkonto wurde als aktiv gekennzeichnet"
 
-#: includes/Classes/ActionsLog.php:65
+#: includes/Classes/ActionsLog.php:61
 msgid "A user account was marked as inactive"
 msgstr "Ein Systembenutzerkonto wurde als inaktiv gekennzeichnet"
 
-#: includes/Classes/ActionsLog.php:66
+#: includes/Classes/ActionsLog.php:62
 msgid "A client account was marked as active"
 msgstr "Ein Kundenkonto wurde als aktiv gekennzeichnet"
 
-#: includes/Classes/ActionsLog.php:67
+#: includes/Classes/ActionsLog.php:63
 msgid "A client account was marked as inactive"
 msgstr "Ein Kundenkonto wurde als inaktiv gekennzeichnet"
 
-#: includes/Classes/ActionsLog.php:68
+#: includes/Classes/ActionsLog.php:64
 msgid "A file was marked as hidden"
 msgstr "Eine Datei wurde als versteckt markiert"
 
-#: includes/Classes/ActionsLog.php:69
+#: includes/Classes/ActionsLog.php:65
 msgid "A file was marked as visible"
 msgstr "Eine Datei wurde als sichtbar markiert"
 
-#: includes/Classes/ActionsLog.php:70 includes/Classes/ActionsLog.php:71
+#: includes/Classes/ActionsLog.php:66 includes/Classes/ActionsLog.php:67
 msgid "A file was marked as hidden for everyone"
 msgstr "Eine Datei wurde als versteckt für jeden gekennzeichnet"
 
-#: includes/Classes/ActionsLog.php:72
+#: includes/Classes/ActionsLog.php:68
 msgid "A user creates a new group"
 msgstr "Ein Systembenutzer erstellt eine neue Gruppe"
 
-#: includes/Classes/ActionsLog.php:73
+#: includes/Classes/ActionsLog.php:69
 msgid "A file is assigned to a client"
 msgstr "Eine Datei wurde einem Kunden zugewiesen"
 
-#: includes/Classes/ActionsLog.php:74
+#: includes/Classes/ActionsLog.php:70
 msgid "A file is assigned to a group"
 msgstr "Eine Datei wurde einer Gruppe zugewiesen"
 
-#: includes/Classes/ActionsLog.php:75
+#: includes/Classes/ActionsLog.php:71
 msgid "The logo on \"Branding\" was changed"
 msgstr "Das Logo unter \"Branding\" wurde geändert"
 
-#: includes/Classes/ActionsLog.php:76
+#: includes/Classes/ActionsLog.php:72
 msgid "A system user edited a file"
 msgstr "Ein Systembenutzer hat eine Datei geändert"
 
-#: includes/Classes/ActionsLog.php:77
+#: includes/Classes/ActionsLog.php:73
 msgid "A client edited a file"
 msgstr "Ein Kunde hat eine Datei geändert"
 
-#: includes/Classes/ActionsLog.php:78
+#: includes/Classes/ActionsLog.php:74
 msgid "A user created a category"
 msgstr "Ein Systembenutzer hat eine Kategorie erstellt"
 
-#: includes/Classes/ActionsLog.php:79
+#: includes/Classes/ActionsLog.php:75
 msgid "A user edited a category"
 msgstr "Ein Systembenutzer hat eine Kategorie geändert"
 
-#: includes/Classes/ActionsLog.php:80
+#: includes/Classes/ActionsLog.php:76
 msgid "A user deleted a category"
 msgstr "Ein Systembenutzer hat eine Kategorie gelöscht"
 
-#: includes/Classes/ActionsLog.php:81
+#: includes/Classes/ActionsLog.php:77
 msgid "A client account request was processed"
 msgstr "Eine Kundenanfrage wurde verarbeitet"
 
-#: includes/Classes/ActionsLog.php:82
+#: includes/Classes/ActionsLog.php:78
 msgid "A client's groups membership requests were processed"
 msgstr "Eine Gruppenmitgliedschaftsanforderung eines Kunden wurde verarbeitet"
 
-#: includes/Classes/ActionsLog.php:83
+#: includes/Classes/ActionsLog.php:79
 msgid "A file preview request was made"
 msgstr "Eine Dateivorschauanforderung wurde erstellt"
 
-#: includes/Classes/ActionsLog.php:84
-msgid "ProjecSend has been installed"
+#: includes/Classes/ActionsLog.php:80
+msgid "ProjectSend has been installed"
 msgstr "ProjectSend wurde installiert"
 
-#: includes/Classes/ActionsLog.php:85
+#: includes/Classes/ActionsLog.php:81
 msgid "ProjectSend was updated"
 msgstr "ProjectSend wurde aktualisiert"
 
-#: includes/Classes/ActionsLog.php:86
+#: includes/Classes/ActionsLog.php:82
+msgid "The database was updated"
+msgstr "Die Datenbank wurde aktualisiert"
+
+#: includes/Classes/ActionsLog.php:83
 msgid "A client account request was approved"
 msgstr "Eine Kundenkontoanforderung wurde genehmigt"
 
-#: includes/Classes/ActionsLog.php:87
+#: includes/Classes/ActionsLog.php:84
 msgid "A client account request was denied"
 msgstr "Eine Kundenkontoanforderung wurde abgelehnt"
 
-#: includes/Classes/ActionsLog.php:88
+#: includes/Classes/ActionsLog.php:85
 msgid "System options were updated"
 msgstr "Systemoptionen wurden aktualisiert"
 
-#: includes/Classes/ActionsLog.php:89
+#: includes/Classes/ActionsLog.php:86
 msgid "An email template was updated"
 msgstr "Eine E-Mail-Vorlage wurde hochgeladen"
 
-#: includes/Classes/Auth.php:258
+#: includes/Classes/Auth.php:263
 msgid "Email and password cannot be empty."
 msgstr "E-Mail und Password dürfen nicht leer sein."
 
-#: includes/Classes/Auth.php:277
+#: includes/Classes/Auth.php:282
 #, php-format
 msgid "LDAP connection error: %s"
 msgstr "LDAP Verbindungsfehler: %s"
 
-#: includes/Classes/Auth.php:315 includes/Classes/Auth.php:325
+#: includes/Classes/Auth.php:320 includes/Classes/Auth.php:330
 msgid "The supplied email or password does not match an existing record."
 msgstr ""
 "Die angegebene E-Mail oder das Passwort nicht mit einer bestehenden überein."
 
-#: includes/Classes/Auth.php:334
+#: includes/Classes/Auth.php:339
 msgid "Error binding to LDAP server."
 msgstr "Fehler beim Anbinden vom LDAP-Server."
 
-#: includes/Classes/Auth.php:357
+#: includes/Classes/Auth.php:362
 msgid "Error during log in."
 msgstr "Fehler beim Anmelden."
 
-#: includes/Classes/Auth.php:367
+#: includes/Classes/Auth.php:372
 msgid "The supplied credentials are not valid."
 msgstr "Die zur Verfügung gestellten Anmeldedaten sind nicht gültig."
 
-#: includes/Classes/Auth.php:370
+#: includes/Classes/Auth.php:375
 msgid "The supplied username doesn't exist."
 msgstr "Der angegebene Benutzername existiert nicht."
 
-#: includes/Classes/Auth.php:373
+#: includes/Classes/Auth.php:378
 msgid "The supplied password is incorrect."
 msgstr "Das angegebene Passwort ist falsch."
 
-#: includes/Classes/Auth.php:377
+#: includes/Classes/Auth.php:382
 msgid "This account is not active."
 msgstr "Dieser Account ist nicht aktiv."
 
-#: includes/Classes/Auth.php:379
+#: includes/Classes/Auth.php:384
 msgid ""
 "If you just registered, please wait until a system administrator approves "
 "your account."
@@ -1331,7 +1367,7 @@ msgstr ""
 "Falls Sie sich soeben angemeldet haben, warten Sie bitte, bis ein System "
 "Adminstrator Ihren Account freischaltet."
 
-#: includes/Classes/Auth.php:383 register.php:112
+#: includes/Classes/Auth.php:388 register.php:107
 msgid ""
 "Client self registration is not allowed. If you need an account, please "
 "contact a system administrator."
@@ -1339,19 +1375,85 @@ msgstr ""
 "Kunden-eigene Registrierung ist nicht erlaubt. Falls Sie ein Konto "
 "benötigen, kontaktieren Sie bitte einen Systemadministrator."
 
-#: includes/Classes/Auth.php:386
+#: includes/Classes/Auth.php:391
 msgid "Sign-in with Google cannot be used to create new accounts at this time."
 msgstr ""
 "Der Login mit Google kann derzeit nicht verwendet werden um neu Konten zu "
 "erstellen."
 
-#: includes/Classes/Auth.php:389
+#: includes/Classes/Auth.php:394
 msgid "You must approve the requested permissions to sign in with Google."
 msgstr "Sie müssen die Berechtigungen haben um sich mit Google anzumelden."
 
-#: includes/Classes/Auth.php:392
+#: includes/Classes/Auth.php:397
 msgid "Session timed out. Please log in again."
 msgstr "Sitzung abgelaufen. Bitte erneut anmelden."
+
+#: includes/Classes/BruteForceBlock.php:58
+msgid "IP address must not be empty"
+msgstr "Die IP Adresse darf nicht leer sein"
+
+#: includes/Classes/BruteForceBlock.php:70
+msgid "IP address not found"
+msgstr "IP Adresse nicht gefunden"
+
+#: includes/Classes/BruteForceBlock.php:83
+msgid "IP address successfully unblocked"
+msgstr "Die IP Addresse wurde erfolgreich entsperrt"
+
+#: includes/Classes/BruteForceBlock.php:141
+msgid "IP address blacklisted"
+msgstr "Die IP Adresse wurde auf die Blacklist gesetzt"
+
+#: includes/Classes/Cron.php:103
+msgid "Send email notifications"
+msgstr "E-Mail Benachrichtigung senden"
+
+#: includes/Classes/Cron.php:112 includes/Classes/Cron.php:152
+#: includes/Classes/Cron.php:204
+msgid "Found"
+msgstr "Gefunden"
+
+#: includes/Classes/Cron.php:122
+msgid "Succesfully sent"
+msgstr "Erfolgreich gesendet"
+
+#: includes/Classes/Cron.php:126 includes/Classes/Cron.php:167
+#: includes/Classes/Cron.php:212
+msgid "Failed"
+msgstr "Fehlgeschlagen"
+
+#: includes/Classes/Cron.php:130
+msgid "Skipped (inactive accounts)"
+msgstr "Übersprungen (inaktive Konten)"
+
+#: includes/Classes/Cron.php:142 includes/forms/options/cron.php:51
+msgid "Delete expired files"
+msgstr "Abgelaufene Dateien löschen"
+
+#: includes/Classes/Cron.php:163 includes/Classes/Cron.php:208
+msgid "Succesfully deleted"
+msgstr "Erfolgreich gelöscht"
+
+#: includes/Classes/Cron.php:192 includes/forms/options/cron.php:60
+msgid "Delete orphan files"
+msgstr "Verwaiste Dateien löschen"
+
+#: includes/Classes/Cron.php:255
+msgid "Task disabled. Skipping."
+msgstr "Task ist inaktiv, übersprungen."
+
+#: includes/Classes/Cron.php:263
+msgid "Total:"
+msgstr "Gesamt:"
+
+#: includes/Classes/Cron.php:289
+msgid "Cron results"
+msgstr "Cron Resultat"
+
+#: includes/Classes/EmailNotificacions.php:172
+msgid "No pending notifications found"
+msgstr "Keine ausstehenden Benachrichtigungen gefunden"
 
 #: includes/Classes/Emails.php:36
 msgid "New files uploaded for you"
@@ -1438,7 +1540,7 @@ msgstr ""
 
 #: includes/Classes/Emails.php:69 includes/Classes/Emails.php:118
 #: includes/Classes/Emails.php:128 includes/forms/login.php:15
-#: includes/forms/options/email.php:100 install/make-config.php:251
+#: includes/forms/options/email.php:124 install/make-config.php:249
 msgid "Username"
 msgstr "Benutzername"
 
@@ -1541,29 +1643,34 @@ msgstr "Ein Kunde hat seine Gruppenmitgliedschaftsanforderungen geändert"
 
 #: includes/Classes/Emails.php:126
 msgid ""
-"A client on you site has just changed his groups membership requests and "
+"A client on your site has just changed their groups membership requests and "
 "needs your approval."
 msgstr ""
-"Ein Kunde hat seine Gruppenmitgliedschaftsanforderungen geändert und bittet "
-"um Genehmigung."
+"Ein Kunde auf Ihrer Website hat gerade seine Gruppenmitgliedschaftsanfragen "
+"geändert und benötigt Ihre Zustimmung."
 
 #: includes/Classes/Emails.php:129
 msgid "The client requests access to the following group(s)"
 msgstr "Zusätzlich wünscht der Kunde Zugang zu folgender Gruppe(n)"
 
-#: includes/Classes/Emails.php:284 includes/Classes/Emails.php:534
+#: includes/Classes/Emails.php:289 includes/Classes/Emails.php:539
 msgid "No group requests made"
 msgstr "Es wurde keine Gruppenmitgliedschaftsanforderung erstellt"
 
-#: includes/Classes/Emails.php:553
+#: includes/Classes/Emails.php:556
 msgid "Email configuration test"
 msgstr "E-Mail-Konfigurationstest"
 
-#: includes/Classes/Emails.php:605
+#: includes/Classes/Emails.php:628
 msgid "This is a test message"
 msgstr "Dies ist eine Testnachricht"
 
-#: includes/Classes/Emails.php:734
+#: includes/Classes/Emails.php:643
+#, php-format
+msgid "Sent from %s"
+msgstr "Gesendet von %s"
+
+#: includes/Classes/Emails.php:763
 msgid ""
 "This email contains HTML formatting and cannot be displayed right now. "
 "Please use an HTML compatible reader."
@@ -1571,7 +1678,7 @@ msgstr ""
 "Diese E-Mail enthält HTML-Inhalte und kann nicht angezeigt werden. Bitte "
 "benutzen Sie ein HTML-kompatibles E-Mail Programm."
 
-#: includes/Classes/TableGenerate.php:331
+#: includes/Classes/TableGenerate.php:332
 msgid "Go to:"
 msgstr "Gehe zu:"
 
@@ -1592,8 +1699,8 @@ msgid "Parent"
 msgstr "Vorläufer"
 
 #: includes/forms/categories.php:47 includes/forms/options/clients.php:53
-#: includes/forms/options/clients.php:102 includes/forms/options/email.php:136
-#: manage-files.php:664
+#: includes/forms/options/clients.php:102 includes/forms/options/email.php:160
+#: manage-files.php:703
 msgid "None"
 msgstr "Kein"
 
@@ -1634,15 +1741,15 @@ msgid "Must be alphanumeric"
 msgstr "Muss alphanumerisch sein"
 
 #: includes/forms/clients.php:90 includes/forms/login-ldap.php:11
-#: includes/forms/login.php:20 includes/forms/options/email.php:107
-#: includes/forms/users.php:51 install/index.php:284
-#: install/make-config.php:261
+#: includes/forms/login.php:20 includes/forms/options/email.php:131
+#: includes/forms/users.php:51 install/index.php:245
+#: install/make-config.php:259
 msgid "Password"
 msgstr "Passwort"
 
 #: includes/forms/clients.php:98
 #: includes/forms/reset-password/enter-password.php:14
-#: includes/forms/users.php:59 install/index.php:292
+#: includes/forms/users.php:59 install/index.php:253
 msgid "Generate"
 msgstr "Erstelle"
 
@@ -1716,11 +1823,7 @@ msgstr "Willkommens-Email schicken"
 msgid "Require password change after first login"
 msgstr "Passwort muss nach der ersten Anmeldung geändert werden"
 
-#: includes/forms/clients.php:280
-msgid "Verification"
-msgstr "Verifizierung"
-
-#: includes/forms/clients.php:297 includes/forms/users.php:143
+#: includes/forms/clients.php:287 includes/forms/users.php:143
 msgid "This account information will be e-mailed to the address supplied above"
 msgstr ""
 "Die Kontoinformationen werden an die oben angegebene E-Mail Adresse gesendet"
@@ -1758,7 +1861,7 @@ msgid "Assignations"
 msgstr "Zuordnungen"
 
 #: includes/forms/file_editor.php:117 includes/main-menu.php:104
-#: includes/main-menu.php:207 options.php:26
+#: includes/main-menu.php:207 includes/widgets/counters.php:42 options.php:26
 msgid "Clients"
 msgstr "Kunden"
 
@@ -1801,11 +1904,11 @@ msgstr "Gruppe speichern"
 
 #: includes/forms/groups.php:75
 msgid ""
-"Allows clients to request access to this group in the registraron process "
+"Allows clients to request access to this group in the registration process "
 "and when editing their own profile."
 msgstr ""
-"Ermöglicht es Kunden, im Registrierungsprozess und bei der Bearbeitung ihres "
-"eigenen Profils Zugang zu dieser Gruppe zu beantragen."
+"Ermöglicht es Kunden, bei der Registrierung und bei der Bearbeitung ihres "
+"eigenen Profils den Zugang zu dieser Gruppe zu beantragen."
 
 #: includes/forms/groups.php:78
 msgid ""
@@ -1959,27 +2062,178 @@ msgstr ""
 "Dies betrifft nur Kunden. Als Administrator können Sie trotzdem auf die "
 "Dateien zugreifen."
 
+#: includes/forms/options/cron.php:1
+msgid "Tasks settings"
+msgstr "Einstellungen für Aufgaben"
+
+#: includes/forms/options/cron.php:6
+msgid "Enable schedule tasks"
+msgstr "Zeitplanaufgaben aktivieren"
+
+#: includes/forms/options/cron.php:9
+msgid ""
+"Sample command to execute the cron job every 5 minutes. You may need to "
+"adjust the frequency and paths to match your server's settings."
+msgstr ""
+"Beispielbefehl zur Ausführung des Cron-Jobs alle 5 Minuten. Möglicherweise "
+"müssen Sie die Häufigkeit und die Pfade an die Einstellungen Ihres Servers "
+"anpassen."
+
+#: includes/forms/options/cron.php:10
+msgid ""
+"The >/dev/null part will discard the result and prevent you from getting a "
+"email from your OS after each run."
+msgstr ""
+"Der Teil >/dev/null verwirft das Ergebnis und verhindert, dass Sie nach "
+"jedem Lauf eine E-Mail von Ihrem Betriebssystem erhalten."
+
+#: includes/forms/options/cron.php:19
+msgid "Enable cron execution via command line only"
+msgstr "Aktivieren Sie die Cron-Ausführung nur über die Kommandozeile"
+
+#: includes/forms/options/cron.php:22
+msgid ""
+"It's recommended to keep this checked to prevent unathorized executions of "
+"the tasks by accessing the URL directly."
+msgstr ""
+"Es wird empfohlen, diese Option aktiviert zu lassen, um zu verhindern, dass "
+"die Aufgaben durch direkten Zugriff auf die URL unkontrolliert ausgeführt "
+"werden."
+
+#: includes/forms/options/cron.php:24
+msgid ""
+"If you disable this option, use the following URL to run your cron job via "
+"HTTP request:"
+msgstr ""
+"Wenn Sie diese Option deaktivieren, verwenden Sie die folgende URL, um Ihren "
+"Cron-Job per HTTP-Anfrage auszuführen:"
+
+#: includes/forms/options/cron.php:31
+msgid "Cron securiy key"
+msgstr "Cron Sicherheitsschlüssel"
+
+#: includes/forms/options/cron.php:34
+msgid ""
+"This key must be present in the URL to validate the cron job and execute the "
+"required actions."
+msgstr ""
+"Dieser Schlüssel muss in der URL vorhanden sein, damit der Cron-Job "
+"validiert und die erforderlichen Aktionen ausgeführt werden können."
+
+#: includes/forms/options/cron.php:41
+msgid "Send pending email notifications"
+msgstr "Ausstehende E-Mail-Benachrichtigungen senden"
+
+#: includes/forms/options/cron.php:44
+msgid ""
+"Combine this option with the notifications setting \"Max. emails to send at "
+"once\" to throttle emails and prevent issues."
+msgstr ""
+"Kombinieren Sie diese Option mit der Benachrichtigungseinstellung \"Max. zu "
+"sendende E-Mails auf einmal\", um E-Mails zu drosseln und Probleme zu "
+"vermeiden."
+
+#: includes/forms/options/cron.php:53
+#, php-format
+msgid "Current date/time according to your settings is %s."
+msgstr ""
+"Das aktuelle Datum/die aktuelle Uhrzeit ist laut Ihren Einstellungen %s."
+
+#: includes/forms/options/cron.php:66
+msgid "Orphan files to delete:"
+msgstr "Zu löschende verwaiste Dateien:"
+
+#: includes/forms/options/cron.php:71
+msgid "All orphan files"
+msgstr "Alle verwaisten Dateien"
+
+#: includes/forms/options/cron.php:72
+msgid "Only files with extensions that are not allowed"
+msgstr "Nur Dateien mit Erweiterungen, die nicht erlaubt sind"
+
+#: includes/forms/options/cron.php:94
+msgid "Execution results"
+msgstr "Ergebnisse der Ausführung"
+
+#: includes/forms/options/cron.php:99
+msgid "Save results on database"
+msgstr "Speichere Ergebnisse in der Datenbank"
+
+#: includes/forms/options/cron.php:101
+msgid ""
+"Important: each run of the cron job will add a record to the database. Watch "
+"the size of the cron log table and clean it if it gets too big."
+msgstr ""
+"Wichtig: Bei jedem Durchlauf des Cron-Jobs wird ein Datensatz zur Datenbank "
+"hinzugefügt. Beobachten Sie die Größe der Cron-Protokolltabelle und löschen "
+"Sie sie, wenn sie zu groß wird."
+
+#: includes/forms/options/cron.php:108
+msgid "E-mail results summary after each execution"
+msgstr "Zusammenfassung der Ergebnisse nach jeder Ausführung per Email senden"
+
+#: includes/forms/options/cron.php:114
+msgid "E-mail to send the summary to"
+msgstr "Email für die Zusammenfassung"
+
+#: includes/forms/options/cron.php:117
+msgid ""
+"Leaving this field empty will send the results to the default \"from\" "
+"address."
+msgstr ""
+"Wenn Sie dieses Feld leer lassen, werden die Ergebnisse an die "
+"Standardadresse \"von\" gesendet."
+
 #: includes/forms/options/email.php:1
 msgid "\"From\" information"
 msgstr "\"From\" Information"
 
-#: includes/forms/options/email.php:4 install/index.php:270
+#: includes/forms/options/email.php:4 install/index.php:231
 msgid "E-mail address"
 msgstr "E-Mail Adresse"
 
 #: includes/forms/options/email.php:19
+msgid "System performance"
+msgstr "Leistung des Systems"
+
+#: includes/forms/options/email.php:24
+msgid "Send \"New file\" email notifications during the file saving process."
+msgstr ""
+"Senden von E-Mail-Benachrichtigungen über neue Dateien während des "
+"Speichervorgangs."
+
+#: includes/forms/options/email.php:27
+msgid ""
+"By unchecking this option, notifications are not sent during the file "
+"uploading and editing operations which results in much faster page loading "
+"and a better user experience."
+msgstr ""
+"Wenn Sie diese Option deaktivieren, werden während des Hochladens und "
+"Bearbeitens von Dateien keine Benachrichtigungen gesendet, was zu einem "
+"wesentlich schnelleren Laden der Seite und einer besseren "
+"Benutzerfreundlichkeit führt."
+
+#: includes/forms/options/email.php:28
+msgid ""
+"Warning: only disable this setting if you have a cron job that takes care of "
+"sending the notifications."
+msgstr ""
+"Achtung: Deaktivieren Sie diese Einstellung nur, wenn Sie einen Cron-Job "
+"haben, der sich um das Senden der Benachrichtigungen kümmert."
+
+#: includes/forms/options/email.php:35
 msgid "Send copies"
 msgstr "Kopien senden"
 
-#: includes/forms/options/email.php:24
+#: includes/forms/options/email.php:40
 msgid "When a system user uploads files"
 msgstr "Sobald ein Systembenutzer Dateien hochlädt"
 
-#: includes/forms/options/email.php:32
+#: includes/forms/options/email.php:48
 msgid "When a client uploads files"
 msgstr "Sobald ein Kunde Dateien hochlädt"
 
-#: includes/forms/options/email.php:38
+#: includes/forms/options/email.php:54
 msgid ""
 "Define here who will receive copies of this emails. These are sent as BCC so "
 "neither recipient will see the other addresses."
@@ -1987,49 +2241,65 @@ msgstr ""
 "Legen Sie hier fest, wer Kopien von diesen E-Mail's erhält. Diese werden als "
 "BCC gesendet, so keiner von den Empfänger wird die anderen Adressen sehen."
 
-#: includes/forms/options/email.php:44
+#: includes/forms/options/email.php:60
 msgid "Address supplied above (on \"From\")"
 msgstr "Oben angegebene Adresse (bei \"Von\")"
 
-#: includes/forms/options/email.php:50
+#: includes/forms/options/email.php:66
 msgid "Also to this addresses"
 msgstr "Auch an diese Adresse"
 
-#: includes/forms/options/email.php:53
+#: includes/forms/options/email.php:69
 msgid "Separate e-mail addresses with a comma."
 msgstr "Trennen Sie mehrere E-Mail Adressen mit einem Komma."
 
-#: includes/forms/options/email.php:59
+#: includes/forms/options/email.php:75
 msgid "Expiration"
 msgstr "Läuft ab"
 
-#: includes/forms/options/email.php:62
-msgid "Maximum sending attemps"
-msgstr "Maximale Anzahl der Sendeversuche"
+#: includes/forms/options/email.php:78
+msgid "Maximum sending attempts"
+msgstr "Maximale Anzahl an Sendeversuchen"
 
-#: includes/forms/options/email.php:65
-msgid "Define how many times will the system attemp to send each notification."
+#: includes/forms/options/email.php:81
+msgid ""
+"Define how many times the system will attempt to send each notification."
 msgstr ""
-"Definieren Sie, wie viele Male das System versuchen soll, jede "
-"Benachrichtigung zu senden."
+"Legen Sie fest, wie oft das System versuchen soll, jede Benachrichtigung zu "
+"senden."
 
-#: includes/forms/options/email.php:70
+#: includes/forms/options/email.php:86
 msgid "Days before expiring"
 msgstr "Tage bis zum Ablaufen der Datei"
 
-#: includes/forms/options/email.php:73
+#: includes/forms/options/email.php:89
 msgid "Notifications older than this will not be sent."
 msgstr "Benachrichtigungen, die älter sind als diese, werden nicht gesendet."
 
-#: includes/forms/options/email.php:73
+#: includes/forms/options/email.php:89 includes/forms/options/email.php:97
 msgid "Set to 0 to disable."
 msgstr "Auf 0 setzen, um zu deaktivieren."
 
-#: includes/forms/options/email.php:79
+#: includes/forms/options/email.php:94
+msgid "Max. emails to send at once"
+msgstr "Max. gleichzeitig zu versendende E-Mails"
+
+#: includes/forms/options/email.php:97
+msgid ""
+"Sending too many emails at once can lead to issues. If you set up a "
+"notifications cron job, you can set this to a convenient, safe amount of "
+"emails to attempt to send per run (ie: 20)."
+msgstr ""
+"Das Versenden von zu vielen E-Mails auf einmal kann zu Problemen führen. "
+"Wenn Sie einen Cron-Job für Benachrichtigungen einrichten, können Sie die "
+"Anzahl der pro Durchlauf zu versendenden E-Mails auf eine bequeme und "
+"sichere Zahl einstellen (z. B. 20)."
+
+#: includes/forms/options/email.php:103
 msgid "E-mail sending options"
 msgstr "E-Mail Versandoptionen"
 
-#: includes/forms/options/email.php:80
+#: includes/forms/options/email.php:104
 msgid ""
 "Here you can select which mail system will be used when sending the "
 "notifications. If you have a valid e-mail account, SMTP is the recommended "
@@ -2039,15 +2309,15 @@ msgstr ""
 "Benachrichtigungen versendet werden sollen. Falls Sie ein gültiges E-Mail "
 "Konto besitzen, SMTP ist die empfohlene Option."
 
-#: includes/forms/options/email.php:83
+#: includes/forms/options/email.php:107
 msgid "Mailer"
 msgstr "Mailer"
 
-#: includes/forms/options/email.php:96
+#: includes/forms/options/email.php:120
 msgid "SMTP & Gmail shared options"
 msgstr "Gemeinsame SMTP & Google Mail Optionen"
 
-#: includes/forms/options/email.php:97
+#: includes/forms/options/email.php:121
 msgid ""
 "You need to include your username (usually your e-mail address) and password "
 "if you have selected either SMTP or Gmail as your mailer."
@@ -2056,45 +2326,45 @@ msgstr ""
 "Passwort angeben, wenn Sie entweder SMTP oder Google Mail als Ihren Mailer "
 "gewählt haben."
 
-#: includes/forms/options/email.php:115
+#: includes/forms/options/email.php:139
 msgid "SMTP options"
 msgstr "SMTP Optionen"
 
-#: includes/forms/options/email.php:116
+#: includes/forms/options/email.php:140
 msgid "If you selected SMTP as your mailer, please complete these options."
 msgstr ""
 "Falls Sie SMTP als Mailer gewählt haben, vervollständigen Sie bitte diese "
 "Optionen."
 
-#: includes/forms/options/email.php:119 install/make-config.php:231
+#: includes/forms/options/email.php:143 install/make-config.php:229
 msgid "Host"
 msgstr "Host"
 
-#: includes/forms/options/email.php:126
+#: includes/forms/options/email.php:150
 msgid "Port"
 msgstr "Port"
 
-#: includes/forms/options/email.php:133
+#: includes/forms/options/email.php:157
 msgid "Authentication"
 msgstr "Authentifizierung"
 
-#: includes/forms/options/email.php:145
+#: includes/forms/options/email.php:169
 msgid "SSL options"
 msgstr "SSL Optionen"
 
-#: includes/forms/options/email.php:150
+#: includes/forms/options/email.php:174
 msgid "Verify peer"
 msgstr "Gegenstelle verifizieren"
 
-#: includes/forms/options/email.php:158
+#: includes/forms/options/email.php:182
 msgid "Verify peer name"
 msgstr "Name der Gegenstelle verifizieren"
 
-#: includes/forms/options/email.php:166
+#: includes/forms/options/email.php:190
 msgid "Allow self signed"
 msgstr "Erlaube selbst signierte Zertifikate"
 
-#: includes/forms/options/email.php:175
+#: includes/forms/options/email.php:199
 msgid "After saving your options, you can test your configuration here"
 msgstr ""
 "Nachdem speichern Ihrer Optionen, können Sie Ihre Konfiguration hier testen"
@@ -2152,7 +2422,7 @@ msgstr ""
 "und die Zeitzonen beeinflussen, wie die Kunden die Daten auf ihrer "
 "Dateiliste sehen."
 
-#: includes/forms/options/general.php:5 install/index.php:244
+#: includes/forms/options/general.php:5 install/index.php:205
 msgid "Site name"
 msgstr "Site Name"
 
@@ -2165,47 +2435,61 @@ msgid "Time format"
 msgstr "Zeitformat"
 
 #: includes/forms/options/general.php:28
-msgid "For example, d/m/Y h:i:s will result in something like"
-msgstr "Zum Beispiel wird d/m/y h:i:s so ausgeben"
+#, php-format
+msgid "For example, %s will display the current date and time like this: %s"
+msgstr ""
+"Zum Beispiel zeigt %s das aktuelle Datum und die Uhrzeit wie folgt an: %s"
 
 #: includes/forms/options/general.php:29
-msgid "For the full list of available values, visit"
-msgstr "Um eine Liste mit allen verfügbaren Variablen einzusehen, besuchen Sie"
+#, php-format
+msgid ""
+"For the full list of available values, visit %s the official PHP Manual %s"
+msgstr ""
+"Die vollständige Liste der verfügbaren Werte finden Sie in %s dem "
+"offiziellen PHP-Handbuch %s"
 
-#: includes/forms/options/general.php:29
-msgid "this page"
-msgstr "diese Seite"
+#: includes/forms/options/general.php:30
+msgid "This date will be considered for files expiration."
+msgstr "Dieses Datum wird für den Ablauf der Dateien berücksichtigt."
 
-#: includes/forms/options/general.php:36
+#: includes/forms/options/general.php:31
+msgid ""
+"You can adjust your timezone if your local date/time does not match your "
+"server's settings."
+msgstr ""
+"Sie können Ihre Zeitzone anpassen, wenn Ihr lokales Datum/Uhrzeit nicht mit "
+"den Einstellungen Ihres Servers übereinstimmt."
+
+#: includes/forms/options/general.php:39
 msgid "Use custom footer text"
 msgstr "Eigenen Fußzeilentext verwenden"
 
-#: includes/forms/options/general.php:42
+#: includes/forms/options/general.php:45
 msgid "Footer content"
 msgstr "Inhalt der Fußzeile"
 
-#: includes/forms/options/general.php:49
+#: includes/forms/options/general.php:52
 msgid "Pagination results per page"
 msgstr "Angezeigte Datensätze pro Seite"
 
-#: includes/forms/options/general.php:61
+#: includes/forms/options/general.php:64
 msgid "Applies to pagination in all administration areas"
 msgstr ""
 "Übernimmt die Anzahl Datensätze pro Seite für alle administrativen Bereiche"
 
-#: includes/forms/options/general.php:67
+#: includes/forms/options/general.php:70
 msgid "Editor"
 msgstr "Editor"
 
-#: includes/forms/options/general.php:72
+#: includes/forms/options/general.php:75
 msgid "Use the visual editor on files descriptions"
 msgstr "Verwenden Sie den Editor für Dateibeschreibungen"
 
-#: includes/forms/options/general.php:84
+#: includes/forms/options/general.php:87
 msgid "Detect user browser language"
 msgstr "Ermittle die Browsersprache des Nutzers"
 
-#: includes/forms/options/general.php:85
+#: includes/forms/options/general.php:88
 msgid ""
 "If available, will override the default one from the system configuration "
 "file. Affects all users and clients."
@@ -2214,15 +2498,15 @@ msgstr ""
 "überschrieben. \n"
 "Wirkt sich auf alle Systembenutzer und Kunden."
 
-#: includes/forms/options/general.php:92
+#: includes/forms/options/general.php:95 includes/widgets/counters.php:37
 msgid "Downloads"
 msgstr "Downloads"
 
-#: includes/forms/options/general.php:94
+#: includes/forms/options/general.php:97
 msgid "Download method"
 msgstr "Downloadmethode"
 
-#: includes/forms/options/general.php:102
+#: includes/forms/options/general.php:105
 msgid ""
 "Serving files with php is the default method and does not require any "
 "changes to your webserver. However, very large files could download with "
@@ -2232,7 +2516,7 @@ msgstr ""
 "erfordert keine Änderungen an Ihrem Webserver. Bei sehr großen Dateien kann "
 "es aber vereinzelt zu Downloadfehlern kommen."
 
-#: includes/forms/options/general.php:105
+#: includes/forms/options/general.php:108
 msgid ""
 "XSendfile improves downloads by allowing the web server to send the file "
 "directly bypassing php and it's limitations. This in an advanced feature "
@@ -2244,7 +2528,7 @@ msgstr ""
 "Dies ist eine erweiterte Funktion und erfordert eventuell die Installation, "
 "bzw. Aktivierung eines Moduls auf Ihrem Server."
 
-#: includes/forms/options/general.php:106
+#: includes/forms/options/general.php:109
 msgid ""
 "Be aware that if the module is not set up correctly, downloads will trigger "
 "but the files will have a length of 0 bytes."
@@ -2253,7 +2537,7 @@ msgstr ""
 "der Download der Dateien zwar gestartet, die Dateien haben dann aber eine "
 "Größe von 0 Bytes."
 
-#: includes/forms/options/general.php:109
+#: includes/forms/options/general.php:112
 msgid ""
 "X-Accel is a method available in nginx that allows the system to serve files "
 "directly, bypassing php and it's limitations. To configure it, you need to "
@@ -2263,11 +2547,11 @@ msgstr ""
 "zur Verfügung zu stellen. Zur Konfiguration müssen Sie Ihren Serverblock um "
 "den folgenden Code erweitern:"
 
-#: includes/forms/options/general.php:120
+#: includes/forms/options/general.php:123
 msgid "System location"
 msgstr "Systemstandort"
 
-#: includes/forms/options/general.php:121
+#: includes/forms/options/general.php:124
 msgid ""
 "These options are to be changed only if you are moving the system to another "
 "place. Changes here can cause ProjectSend to stop working."
@@ -2276,7 +2560,7 @@ msgstr ""
 "anderen Ort verschieben. Änderungen können ProjectSend funktionsunfähig "
 "machen."
 
-#: includes/forms/options/general.php:124
+#: includes/forms/options/general.php:127
 msgid "System URI"
 msgstr "System URI"
 
@@ -2397,8 +2681,11 @@ msgid "reCAPTCHA"
 msgstr "reCAPTCHA"
 
 #: includes/forms/options/security.php:79
-msgid "Helps prevent SPAM on your registration form."
-msgstr "Hilft gegen SPAM mit dem Anmeldeformular."
+msgid ""
+"Helps prevent SPAM on your login, registration and password forgotten forms."
+msgstr ""
+"Verhindert SPAM auf Ihren Anmelde-, Registrierungs- und "
+"Passwortvergessensformularen."
 
 #: includes/forms/options/security.php:84
 msgid "Use reCAPTCHA"
@@ -2412,6 +2699,32 @@ msgstr "Seitenschlüssel"
 msgid "Secret key"
 msgstr "Geheimer Schlüssel"
 
+#: includes/forms/options/security.php:111
+msgid "Log in throttle"
+msgstr "Verzögerung für Anmeldung"
+
+#: includes/forms/options/security.php:112
+msgid ""
+"Multiple failed log in attempts will increase timeouts for the originating "
+"IP address. Helps prevent brute force attacks."
+msgstr ""
+"Mehrere fehlgeschlagene Anmeldeversuche führen zu einer Erhöhung der "
+"Timeouts für die ursprüngliche IP-Adresse. Hilft, Brute-Force-Angriffe zu "
+"verhindern."
+
+#: includes/forms/options/security.php:115
+msgid "IP whitelist"
+msgstr "IP Whitelist"
+
+#: includes/forms/options/security.php:118
+#: includes/forms/options/security.php:126
+msgid "Enter one IP address per line"
+msgstr "Geben Sie eine IP-Adresse pro Zeile ein"
+
+#: includes/forms/options/security.php:123
+msgid "IP blacklist"
+msgstr "IP Blacklist"
+
 #: includes/forms/reset-password/enter-email.php:11
 msgid ""
 "Please enter your account's e-mail address. You will receive a link to "
@@ -2420,7 +2733,7 @@ msgstr ""
 "Bitte geben Sie Ihre E-Mail Adresse ein. Sie erhalten danach einen Link, um "
 "den Vorgang fortzusetzen."
 
-#: includes/forms/reset-password/enter-email.php:14
+#: includes/forms/reset-password/enter-email.php:16
 msgid "Get a new password"
 msgstr "Neues Passwort anfordern"
 
@@ -2470,7 +2783,7 @@ msgstr "Systembenutzer hinzufügen"
 msgid "Save user"
 msgstr "Systembenutzer speichern"
 
-#: includes/forms/users.php:75 users.php:299
+#: includes/forms/users.php:75 users.php:297
 msgid "Role"
 msgstr "Rolle"
 
@@ -2510,8 +2823,8 @@ msgid "%s created the client account %s"
 msgstr "%s erstellte das Kundenkonto %s"
 
 #: includes/functions.actionslog.php:47
-msgid "created a client account for themself."
-msgstr "erstellte ein Kundenkonto für sich selbst."
+msgid "created a client account for themselves."
+msgstr "ein Kundenkonto für sich selbst erstellt."
 
 #: includes/functions.actionslog.php:48
 #, php-format
@@ -2774,150 +3087,159 @@ msgid "%s updated ProjectSend to version %s"
 msgstr "%s aktualisierte ProjectSend auf Version %s"
 
 #: includes/functions.actionslog.php:258
+msgid "updated the database to version"
+msgstr "aktualisierte die Datenbank auf die Version"
+
+#: includes/functions.actionslog.php:260
+#, php-format
+msgid "%s updated the database to version %s"
+msgstr "%s aktualisierte die Datenbank auf Version %s"
+
+#: includes/functions.actionslog.php:265
 msgid "logged out of the system."
 msgstr "hat sich abgemeldet."
 
-#: includes/functions.actionslog.php:259
+#: includes/functions.actionslog.php:266
 #, php-format
 msgid "%s logged out of the system"
 msgstr "%s hat sich abgemeldet"
 
-#: includes/functions.actionslog.php:264
+#: includes/functions.actionslog.php:271
 msgid "(user) edited the file"
 msgstr "(Systembenutzer) hat die Datei bearbeitet"
 
-#: includes/functions.actionslog.php:266
+#: includes/functions.actionslog.php:273
 #, php-format
 msgid "%s (user) edited the file %s"
 msgstr "%s (Systembenutzer) hat die Datei %s bearbeitet"
 
-#: includes/functions.actionslog.php:271
+#: includes/functions.actionslog.php:278
 msgid "(client) edited the file"
 msgstr "(Kunde) hat die Datei bearbeitet"
 
-#: includes/functions.actionslog.php:273
+#: includes/functions.actionslog.php:280
 #, php-format
 msgid "%s (client) edited the file %s"
 msgstr "%s (Kunde) hat die Datei %s bearbeitet"
 
-#: includes/functions.actionslog.php:278
+#: includes/functions.actionslog.php:285
 msgid "created the category"
 msgstr "Erstelle die Kategorie"
 
-#: includes/functions.actionslog.php:280
+#: includes/functions.actionslog.php:287
 #, php-format
 msgid "%s created the category %s"
 msgstr "%s erstellte die Kategorie %s"
 
-#: includes/functions.actionslog.php:285
+#: includes/functions.actionslog.php:292
 msgid "edited the category"
 msgstr "Bearbeite die Kategorie"
 
-#: includes/functions.actionslog.php:287
+#: includes/functions.actionslog.php:294
 #, php-format
 msgid "%s edited the category %s"
 msgstr "%s bearbeitete die Kategorie %s"
 
-#: includes/functions.actionslog.php:292
+#: includes/functions.actionslog.php:299
 msgid "deleted the category"
 msgstr "Lösche die Kategorie"
 
-#: includes/functions.actionslog.php:294
+#: includes/functions.actionslog.php:301
 #, php-format
 msgid "%s deleted the category %s"
 msgstr "%s löschte die Kategorie %s"
 
-#: includes/functions.actionslog.php:298
+#: includes/functions.actionslog.php:305
 msgid "An anonymous user"
 msgstr "Ein anonymer Benutzer"
 
-#: includes/functions.actionslog.php:299
+#: includes/functions.actionslog.php:306
 msgid "downloaded the file"
 msgstr "hat die Datei heruntergeladen"
 
-#: includes/functions.actionslog.php:301
+#: includes/functions.actionslog.php:308
 #, php-format
 msgid "An anonymous user downloaded the file %s"
 msgstr "Ein anonymer Benutzer hat die Datei %s heruntergeladen"
 
-#: includes/functions.actionslog.php:306
+#: includes/functions.actionslog.php:313
 msgid "processed an account request for"
 msgstr "Eine Kontoanfrage wurde verarbeitet für"
 
-#: includes/functions.actionslog.php:308
+#: includes/functions.actionslog.php:315
 #, php-format
 msgid "%s processed an account request for %s"
 msgstr "%s bearbeitete die Kontoanfrage für %s"
 
-#: includes/functions.actionslog.php:313
+#: includes/functions.actionslog.php:320
 msgid "processed group memberships requests for"
 msgstr ""
 "Eine Gruppenmitgliedschaftsanforderungen eines Kunden wurde verarbeitet"
 
-#: includes/functions.actionslog.php:315
+#: includes/functions.actionslog.php:322
 #, php-format
 msgid "%s processed group memberships requests for %s"
 msgstr "%s bearbeitete die Gruppenmitgliedschaftsanforderungen des Kunden %s"
 
-#: includes/functions.actionslog.php:320
+#: includes/functions.actionslog.php:327
 msgid "requested a preview for the file"
 msgstr "forderte eine Vorschau für die Datei an"
 
-#: includes/functions.actionslog.php:322
+#: includes/functions.actionslog.php:329
 #, php-format
 msgid "%s requested a preview for the file %s"
 msgstr "%s forderte eine Vorschau für die Datei %s an"
 
-#: includes/functions.actionslog.php:327
+#: includes/functions.actionslog.php:334
 msgid "created an account with a social profile"
 msgstr "Ein Konto mit Social-Account wurde erstellt"
 
-#: includes/functions.actionslog.php:328
+#: includes/functions.actionslog.php:335
 #, php-format
 msgid "%s created an account with a social profile"
 msgstr "%s erstelle einen Account mittels Social Profile"
 
-#: includes/functions.actionslog.php:333
+#: includes/functions.actionslog.php:340
 msgid "logged in with a social profile"
 msgstr "hat sich via Social Profile angemeldet"
 
-#: includes/functions.actionslog.php:334
+#: includes/functions.actionslog.php:341
 #, php-format
 msgid "%s logged in with a social profile"
 msgstr "%s hat sich via Social Profile angemeldet"
 
-#: includes/functions.actionslog.php:339
+#: includes/functions.actionslog.php:346
 msgid "approved an account request for"
 msgstr "überprüfte eine Kontoanfrage für"
 
-#: includes/functions.actionslog.php:341
+#: includes/functions.actionslog.php:348
 #, php-format
 msgid "%s approved an account request for %s"
 msgstr "%s überprüfte eine Kontoanfrage für %s"
 
-#: includes/functions.actionslog.php:346
+#: includes/functions.actionslog.php:353
 msgid "denied an account request for"
 msgstr "verweigerte eine Kontoanfrage für"
 
-#: includes/functions.actionslog.php:348
+#: includes/functions.actionslog.php:355
 #, php-format
 msgid "%s denied an account request for %s"
 msgstr "%s verweigerte eine Kontoanfrage für %s"
 
-#: includes/functions.actionslog.php:353
+#: includes/functions.actionslog.php:360
 msgid "updated system options"
 msgstr "aktualisierte Systemeinstellungen"
 
-#: includes/functions.actionslog.php:356
+#: includes/functions.actionslog.php:363
 #, php-format
 msgid "%s updated system options: %s"
 msgstr "%s aktualisierte Systemeinstellungen: %s"
 
-#: includes/functions.actionslog.php:361
+#: includes/functions.actionslog.php:368
 msgid "updated an email template"
 msgstr "aktualisierte eine E-Mail Vorlage"
 
-#: includes/functions.actionslog.php:364
+#: includes/functions.actionslog.php:371
 #, php-format
 msgid "%s updated email template: %s"
 msgstr "%s aktualisierte die E-Mail Vorlage %s"
@@ -2926,46 +3248,46 @@ msgstr "%s aktualisierte die E-Mail Vorlage %s"
 msgid "Search"
 msgstr "Suchen"
 
-#: includes/functions.php:21 includes/functions.php:24
-#: includes/functions.php:27
+#: includes/functions.php:45 includes/functions.php:48
+#: includes/functions.php:51
 #, php-format
 msgid "Missing required extension: %s"
 msgstr "Erforderliche Erweiterung %s fehlt"
 
-#: includes/functions.php:32
+#: includes/functions.php:56
 #, php-format
 msgid "%s minimum version not met. Please upgrade to at least version %s"
 msgstr "%s ist zu alt. Bitte aktualisieren Sie mindestens auf Version %s"
 
-#: includes/functions.php:49
+#: includes/functions.php:73
 msgid "Error"
 msgstr "Fehler"
 
-#: includes/functions.php:192
+#: includes/functions.php:236
 msgid "An unexpected error has occurred"
 msgstr "Ein unerwarteter Fehler ist aufgetreten"
 
-#: includes/functions.php:193
+#: includes/functions.php:237
 msgid "Could not generate a random password"
 msgstr "Es konnte kein zufälliges Passwort generieren werden"
 
-#: includes/functions.php:750
+#: includes/functions.php:794
 msgid "Provided by"
 msgstr "Bereitgestellt von"
 
-#: includes/functions.php:750
+#: includes/functions.php:794
 msgid "version"
 msgstr "Version"
 
-#: includes/functions.php:750
+#: includes/functions.php:794
 msgid "Free software"
 msgstr "Freie Software"
 
-#: includes/functions.php:785
+#: includes/functions.php:829
 msgid "Important:"
 msgstr "Wichtig:"
 
-#: includes/functions.php:785
+#: includes/functions.php:829
 msgid ""
 "There are no clients or groups at the moment. You can still upload files and "
 "assign them later."
@@ -2973,15 +3295,19 @@ msgstr ""
 "Es gibt derzeit keine Kunden oder Gruppen. Sie können aber auch Dateien "
 "hochladen und diese später zuweisen."
 
-#: includes/functions.php:1416
+#: includes/functions.php:1479
 msgid "The password must contain, at least:"
 msgstr "Das Passwort muss zumindest folgendes beinhalten:"
+
+#: includes/functions.php:1919
+msgid "Verification"
+msgstr "Verifizierung"
 
 #: includes/functions.session.permissions.php:79
 msgid "Password change is required for your account"
 msgstr "Sie müssen Ihr Passwort ändern"
 
-#: includes/header-messages.php:8 includes/updates.messages.php:16
+#: includes/header-messages.php:8 includes/updates.messages.php:21
 msgid "System Notice:"
 msgstr "System-Hinweis:"
 
@@ -3027,7 +3353,7 @@ msgstr ""
 "Um Speicherplatz freizugeben, können Sie alte Dateien manuell aus dem "
 "folgenden Ordner löschen: %s"
 
-#: includes/main-menu.php:76 includes/main-menu.php:317
+#: includes/main-menu.php:76 includes/main-menu.php:329
 msgid "Upload"
 msgstr "Upload"
 
@@ -3048,7 +3374,7 @@ msgstr "Kundengruppen"
 msgid "Manage groups"
 msgstr "Gruppen verwalten"
 
-#: includes/main-menu.php:161
+#: includes/main-menu.php:161 includes/widgets/counters.php:52
 msgid "System Users"
 msgstr "Systembenutzer"
 
@@ -3072,25 +3398,37 @@ msgstr "Allgemeine Einstellungen"
 msgid "E-mail notifications"
 msgstr "E-Mail Benachrichtigung"
 
-#: includes/main-menu.php:219 options.php:59
+#: includes/main-menu.php:219 options.php:60
 msgid "Security"
 msgstr "Sicherheit"
 
-#: includes/main-menu.php:223 options.php:70
+#: includes/main-menu.php:223 options.php:71
 msgid "Branding"
 msgstr "Branding"
 
-#: includes/main-menu.php:227 options.php:75
+#: includes/main-menu.php:227 options.php:76
 msgid "External Login"
 msgstr "Social Login"
 
-#: includes/main-menu.php:290
+#: includes/main-menu.php:231 options.php:81
+msgid "Scheduled tasks (cron)"
+msgstr "Geplante Aufgaben (cron)"
+
+#: includes/main-menu.php:294
 msgid "Tools"
 msgstr "Werkzeuge"
 
-#: includes/main-menu.php:295
+#: includes/main-menu.php:299
 msgid "Actions log"
 msgstr "Aktionsprotokoll"
+
+#: includes/main-menu.php:303
+msgid "Cron log"
+msgstr "Cron Log"
+
+#: includes/main-menu.php:311 unblock-ip.php:11 unblock-ip.php:49
+msgid "Unblock IP"
+msgstr "IP entsperren"
 
 #: includes/text.strings.php:13
 msgid "System Administrator"
@@ -3100,7 +3438,7 @@ msgstr "System-Administrator"
 msgid "Account Manager"
 msgstr "Kontomanager"
 
-#: includes/text.strings.php:15 manage-files.php:356 manage-files.php:561
+#: includes/text.strings.php:15 manage-files.php:76 manage-files.php:600
 msgid "Uploader"
 msgstr "Uploader"
 
@@ -3108,8 +3446,7 @@ msgstr "Uploader"
 msgid "Client"
 msgstr "Kunde"
 
-#: includes/text.strings.php:31 index.php:20 install/index.php:64
-#: install/index.php:215
+#: includes/text.strings.php:31 index.php:25 install/index.php:109
 msgid "Log in"
 msgstr "Anmelden"
 
@@ -3347,11 +3684,11 @@ msgstr "1 Zahl"
 msgid "1 special character"
 msgstr "1 Sonderzeichen"
 
-#: includes/text.strings.php:99 install/index.php:43
+#: includes/text.strings.php:99
 msgid "Sitename was not completed."
 msgstr "Site-Name ist unvollständig."
 
-#: includes/text.strings.php:100 install/index.php:44
+#: includes/text.strings.php:100
 msgid "ProjectSend URI was not completed."
 msgstr "ProjectSend URI ist unvollständig."
 
@@ -3394,17 +3731,17 @@ msgstr ""
 "Funktion \"Verwaiste Dateien suchen\" den gewünschten Kunden zugeordnet "
 "werden:"
 
-#: includes/updates.messages.php:16
+#: includes/updates.messages.php:21
 msgid "The database was updated to support this version of the software."
 msgstr ""
 "Die Datenbank wurde aktualisiert um diese Version der Software zu "
 "unterstützen."
 
-#: includes/updates.messages.php:23
+#: includes/updates.messages.php:28
 msgid "Do you want to support ProjectSend?"
 msgstr "Möchten Sie ProjectSend unterstützen?"
 
-#: includes/updates.messages.php:24
+#: includes/updates.messages.php:29
 msgid ""
 "Please remember that this tool is free software. If you find the system "
 "useful"
@@ -3412,45 +3749,32 @@ msgstr ""
 "Bitte beachten Sie, dass dieses Tool freie Software ist. Wenn Sie es "
 "nützlich finden"
 
-#: includes/updates.messages.php:25
+#: includes/updates.messages.php:30
 msgid "please consider making a donation to support further development."
 msgstr ""
 "Bitte ziehen Sie eine Spende in Betracht, um die weitere Entwicklung zu "
 "unterstützen."
 
-#: includes/updates.messages.php:26
+#: includes/updates.messages.php:31
 msgid "Thank you!"
 msgstr "Danke!"
 
-#: includes/updates.messages.php:45
+#: includes/updates.messages.php:50
 msgid "Update available!"
 msgstr "Aktualisierung verfügbar!"
 
-#: includes/updates.messages.php:45
+#: includes/updates.messages.php:50
 #, php-format
 msgid "ProjectSend %s has been released"
 msgstr "ProjectSend %s wurde freigegeben"
 
-#: includes/updates.messages.php:48 manage-files.php:657
+#: includes/updates.messages.php:53 manage-files.php:696
 msgid "Download"
 msgstr "Download"
 
-#: includes/updates.messages.php:48
+#: includes/updates.messages.php:53
 msgid "Changelog"
 msgstr "Liste der Änderungen"
-
-#: includes/upload-send-notifications.php:243
-#: includes/upload-send-notifications.php:277
-msgid "E-mail notifications have been sent."
-msgstr "E-Mail Benachrichtigung wurde versendet."
-
-#: includes/upload-send-notifications.php:257
-msgid "One or more notifications couldn't be sent."
-msgstr "Eine oder mehrere Benachrichtigungen konnten nich gesendet werden."
-
-#: includes/upload-send-notifications.php:281
-msgid "E-mail notifications for inactive clients were not sent."
-msgstr "E-Mail Benachrichtigung für inaktive Kunden wurde nicht gesendet."
 
 #: includes/widgets/actions-log.php:12
 msgid "Recent activities"
@@ -3460,19 +3784,19 @@ msgstr "Kürzliche Aktivitäten"
 msgid "View all"
 msgstr "Alle ansehen"
 
-#: includes/widgets/ajax/statistics.php:77
+#: includes/widgets/ajax/statistics.php:79
 msgid "Uploads by users"
 msgstr "Uploads von Systembenutzern"
 
-#: includes/widgets/ajax/statistics.php:83
+#: includes/widgets/ajax/statistics.php:85
 msgid "Uploads by clients"
 msgstr "Uploads von Kunden"
 
-#: includes/widgets/ajax/statistics.php:89
+#: includes/widgets/ajax/statistics.php:91
 msgid "Downloads by known users"
 msgstr "Downloads von bekannten Benutzern"
 
-#: includes/widgets/ajax/statistics.php:95
+#: includes/widgets/ajax/statistics.php:97
 msgid "Public Downloads"
 msgstr "Öffentliche Downloads"
 
@@ -3489,7 +3813,7 @@ msgstr "Statistiken"
 msgid "%d days"
 msgstr "%d Tage"
 
-#: includes/widgets/system-information.php:12 install/make-config.php:384
+#: includes/widgets/system-information.php:12 install/make-config.php:382
 msgid "System information"
 msgstr "System Information"
 
@@ -3550,55 +3874,80 @@ msgstr "Datenbank"
 msgid "Driver"
 msgstr "Treiber"
 
-#: index.php:100
+#: index.php:71
+#, php-format
+msgid "Please wait %s seconds before attempting to log in again."
+msgstr ""
+"Bitte warten Sie %s Sekunden, bevor Sie erneut versuchen, sich anzumelden."
+
+#: index.php:73
+msgid ""
+"Warning: You are about to reach the failed attempts limit, which will "
+"completely block your access for a few minutes."
+msgstr ""
+"Warnung: Sie sind dabei, das Limit für Fehlversuche zu erreichen, wodurch "
+"Ihr Zugang für einige Minuten vollständig gesperrt wird."
+
+#: index.php:128
 msgid "Forgot your password?"
 msgstr "Haben Sie Ihr Passwort vergessen?"
 
-#: index.php:100
+#: index.php:128
 msgid "Set up a new one."
 msgstr "Passwort zurücksetzen."
 
-#: index.php:104 public.php:291
+#: index.php:132 public.php:291
 msgid "Don't have an account yet?"
 msgstr "Haben Sie noch kein Konto?"
 
-#: index.php:104 public.php:291
+#: index.php:132 public.php:291
 msgid "Register as a new client."
 msgstr "Als neuer Kunde registrieren."
 
-#: index.php:108
+#: index.php:136
 msgid "This server does not allow self registrations."
 msgstr "Dieser Server erlaubt keine Selbst-Registrierungen."
 
-#: index.php:109
+#: index.php:137
 msgid "If you need an account, please contact a server administrator."
 msgstr ""
 "Falls Sie ein Konto benötigen, kontaktieren Sie bitte einen "
 "Serveradministrator."
 
-#: install/index.php:42 install/index.php:298 install/make-config.php:42
-msgid "Install"
-msgstr "Installieren"
+#: install/index.php:71
+msgid "Database installation was successful, but errors were encountered."
+msgstr ""
+"Die Datenbankinstallation war erfolgreich, es traten aber Fehler dabei auf."
 
-#: install/index.php:59
+#: install/index.php:87
+msgid "The following directories could not be created:"
+msgstr "Die folgenden Verzeichnisse konnten nicht erstellt werden:"
+
+#: install/index.php:94
+msgid "The following directories could not be chmodded to 755:"
+msgstr ""
+"Für die folgenden Verzeichnisse konnte die Sicherheitsstufe 755 nicht "
+"festgelegt werden:"
+
+#: install/index.php:103
 msgid "Congratulations! Everything is up and running."
 msgstr "Glückwunsch! Alles läuft einwandfrei."
 
-#: install/index.php:60
+#: install/index.php:104
 msgid ""
 "You may proceed to log in with your newely created username and password."
 msgstr ""
 "Sie können sich jetzt mit dem neuen Benutzernamen und Passwort anmelden."
 
-#: install/index.php:73
+#: install/index.php:120
 msgid "Already installed"
 msgstr "Bereits installiert"
 
-#: install/index.php:74
+#: install/index.php:121
 msgid "It seems that ProjectSend is already installed here."
 msgstr "Es sieht so aus, als dass ProjectSend bereits hier installiert ist."
 
-#: install/index.php:75
+#: install/index.php:122
 msgid ""
 "If you want to reinstall, please delete the system tables from the database "
 "and come back to the installation form."
@@ -3607,30 +3956,19 @@ msgstr ""
 "Tabellen von der Datenbank und kommen Sie auf das Installationsformular "
 "zurück."
 
-#: install/index.php:182
-msgid "Database installation was successful, but errors were encountered."
-msgstr ""
-"Die Datenbankinstallation war erfolgreich, es traten aber Fehler dabei auf."
+#: install/index.php:125
+msgid "Go back"
+msgstr "Gehe zurück"
 
-#: install/index.php:198
-msgid "The following directories could not be created:"
-msgstr "Die folgenden Verzeichnisse konnten nicht erstellt werden:"
-
-#: install/index.php:205
-msgid "The following directories could not be chmodded to 755:"
-msgstr ""
-"Für die folgenden Verzeichnisse konnte die Sicherheitsstufe 755 nicht "
-"festgelegt werden:"
-
-#: install/index.php:227
+#: install/index.php:183
 msgid "There was an error writing to the database."
 msgstr "Beim Schreiben in die Datenbank trat ein Fehler auf."
 
-#: install/index.php:238
+#: install/index.php:199
 msgid "Basic system options"
 msgstr "Grundlegende Systemoptionen"
 
-#: install/index.php:239
+#: install/index.php:200
 msgid ""
 "You need to provide this data for a correct system installation. The site "
 "name will be visible in the system panel, and the client's lists."
@@ -3638,11 +3976,11 @@ msgstr ""
 "Sie müssen diese Daten für eine korrekte Installation angeben. Der "
 "Seitenname wird im System Panel und in der Kundenliste sichtbar sein."
 
-#: install/index.php:240
+#: install/index.php:201
 msgid "Remember to edit the file"
 msgstr "Erinnern, die Datei zu bearbeiten"
 
-#: install/index.php:240
+#: install/index.php:201
 msgid ""
 "with your database settings before installing. If the file doesn't exist, "
 "you can create it by renaming the dummy file sys.config.sample.php."
@@ -3651,15 +3989,15 @@ msgstr ""
 "existiert, können Sie diese durch Umbenennen der Datei sys.config.sample.php "
 "erzeugen."
 
-#: install/index.php:251
+#: install/index.php:212
 msgid "ProjectSend URI (address)"
 msgstr "ProjectSend URI (Adresse)"
 
-#: install/index.php:259
+#: install/index.php:220
 msgid "Default system administrator options"
 msgstr "Standart Systemadministrator Optionen"
 
-#: install/index.php:260
+#: install/index.php:221
 msgid ""
 "This info will be used to create a default system user, which can't be "
 "deleted afterwards. Password should be between"
@@ -3668,15 +4006,15 @@ msgstr ""
 "erstellen, der später nicht mehr gelöscht werden kann. Die Länge des "
 "Passworts sollte zwischen"
 
-#: install/index.php:260
+#: install/index.php:221
 msgid "and"
 msgstr "und"
 
-#: install/index.php:260
+#: install/index.php:221
 msgid "characters long."
 msgstr "Zeichen lang."
 
-#: install/index.php:303
+#: install/index.php:264
 msgid ""
 "After installing the system, you can go to the options page to set your "
 "timezone, preferred date display format and thumbnails parameters, besides "
@@ -3691,231 +4029,239 @@ msgstr ""
 msgid "The configuration file already exists."
 msgstr "Die Konfigurationsdatei existiert bereits."
 
-#: install/make-config.php:193
+#: install/make-config.php:191
 msgid "Successfully wrote the config file."
 msgstr "Config-Datei erfolgreich geschrieben."
 
-#: install/make-config.php:197
+#: install/make-config.php:195
 msgid "Continue to installation"
 msgstr "Weiter zur Installation"
 
-#: install/make-config.php:206
+#: install/make-config.php:204
 msgid "Database configuration"
 msgstr "Datenbankkonfiguration"
 
-#: install/make-config.php:207
+#: install/make-config.php:205
 msgid "You need to provide this data for a correct database communication."
 msgstr ""
 "Sie müssen diese Daten für eine korrekte Kommunikation mit der Datenbank zur "
 "Verfügung zu stellen."
 
-#: install/make-config.php:210
+#: install/make-config.php:208
 msgid "Select driver"
 msgstr "Wählen Sie den Treiber"
 
-#: install/make-config.php:215 install/make-config.php:221
+#: install/make-config.php:213 install/make-config.php:219
 msgid "(not supported)"
 msgstr "(nicht unterstützt)"
 
-#: install/make-config.php:241
+#: install/make-config.php:239
 msgid "Database name"
 msgstr "Datenbankname"
 
-#: install/make-config.php:271
+#: install/make-config.php:269
 msgid "Table prefix"
 msgstr "Tabellenpräfix"
 
-#: install/make-config.php:287
+#: install/make-config.php:285
 msgid "The database is already populated"
 msgstr "Die Datenbank ist bereits beschrieben"
 
-#: install/make-config.php:301
+#: install/make-config.php:299
 msgid "Reuse existing tables"
 msgstr "Wiederverwendung von vorhandenen Tabellen"
 
-#: install/make-config.php:314
+#: install/make-config.php:312
 msgid "Language selection"
 msgstr "Sprachauswahl"
 
-#: install/make-config.php:332
+#: install/make-config.php:330
 msgid "Default maximum upload file size"
 msgstr "Grundlegende Maximalgröße beim Upload"
 
-#: install/make-config.php:335
+#: install/make-config.php:333
 msgid "Value expressed in MB, where 1GB = 1024"
 msgstr "Wert in MB, bei dem 1GB = 1024"
 
-#: install/make-config.php:341
+#: install/make-config.php:339
 msgid "Folders"
 msgstr "Ordner"
 
-#: install/make-config.php:372
+#: install/make-config.php:370
 msgid "Writable"
 msgstr "Bbeschreibbar"
 
-#: install/make-config.php:374
+#: install/make-config.php:372
 msgid "Not writable"
 msgstr "Nicht beschreibbar"
 
-#: install/make-config.php:438 install/make-config.php:441
+#: install/make-config.php:436 install/make-config.php:439
 msgid "Check again"
 msgstr "Nochmal überprüfen"
 
-#: install/make-config.php:439
+#: install/make-config.php:437
 msgid "Write config file"
 msgstr "Erstelle die Config-Datei"
 
-#: install/make-config.php:441
+#: install/make-config.php:439
 msgid "Check"
 msgstr "Überprüfen"
 
-#: manage-files.php:37
+#: manage-files.php:39
 msgid "for client"
 msgstr "für Kunde"
 
-#: manage-files.php:52
+#: manage-files.php:54
 msgid "for group"
 msgstr "für Gruppe"
 
-#: manage-files.php:67
+#: manage-files.php:69
 msgid "on category"
 msgstr "auf Kategorie"
 
-#: manage-files.php:97 manage-files.php:115
-msgid "The selected files were marked as hidden."
-msgstr "Die ausgewählten Dateien wurden als versteckt markiert."
+#: manage-files.php:86
+msgid "All files"
+msgstr "Alle Dateien"
 
-#: manage-files.php:106 manage-files.php:124
-msgid "The selected files were marked as visible."
-msgstr "Die ausgewählten Dateien wurden als sichtbar markiert."
-
-#: manage-files.php:136
-msgid "The selected files were succesfully unassigned."
-msgstr "Die Zuweisung der ausgewählten Dateien wurde erfolgreich entfernt."
-
-#: manage-files.php:158
-msgid "The selected files were deleted."
-msgstr "Die ausgewählten Dateien wurden gelöscht."
-
-#: manage-files.php:162
-msgid "Some files could not be deleted."
-msgstr "Einige Dateien konnten nicht gelöscht werden."
-
-#: manage-files.php:174
-msgid "Please select at least one file."
-msgstr "Bitte wählen Sie mindestens eine Datei."
-
-#: manage-files.php:389 manage-files.php:695
-msgid "Visible"
-msgstr "Sichtbar"
-
-#: manage-files.php:390 manage-files.php:695
-msgid "Hidden"
-msgstr "Versteckt"
-
-#: manage-files.php:416
-msgid "Selected files actions"
-msgstr "Aktionen für die ausgewählten Dateien"
-
-#: manage-files.php:433
-msgid "Download zipped"
-msgstr "Download gezippt"
-
-#: manage-files.php:435
-msgid "Set to hidden from everyone already assigned"
-msgstr "Auf \"unsichtbar für alle zugeordneten\" setzen"
-
-#: manage-files.php:436
-msgid "Set to visible to everyone already assigned"
-msgstr "Auf \"sichtbar für alle zugeordneten\" setzen"
-
-#: manage-files.php:442
-msgid "Set to hidden"
-msgstr "Auf unsichtbar setzen"
-
-#: manage-files.php:443
-msgid "Set to visible"
-msgstr "Auf sichtbar setzen"
-
-#: manage-files.php:444
-msgid "Unassign"
-msgstr "Nicht zuweisen"
-
-#: manage-files.php:480
-msgid "There are no files assigned to this category."
-msgstr "Es gibt keine Dateien die dieser Kategorie zugeordnet sind."
-
-#: manage-files.php:486
-msgid "There are no files assigned to this client."
-msgstr "Keine Dateien diesem Kunden zugeordnet."
-
-#: manage-files.php:489
-msgid "You have not uploaded any files for this account."
-msgstr "Sie haben keine Dateien für dieses Konto hochgeladen."
-
-#: manage-files.php:494
-msgid "There are no files for this client."
-msgstr "Keine Dateien für diesen Kunden vorhanden."
-
-#: manage-files.php:542
-msgid "Type"
-msgstr "Typ"
-
-#: manage-files.php:556
-msgid "Size"
-msgstr "Größe"
-
-#: manage-files.php:566
+#: manage-files.php:87 manage-files.php:605
 msgid "Assigned"
 msgstr "Zuordnen"
 
-#: manage-files.php:573
+#: manage-files.php:88
+msgid "Not assigned"
+msgstr "Nicht zugeordnet"
+
+#: manage-files.php:113 manage-files.php:131
+msgid "The selected files were marked as hidden."
+msgstr "Die ausgewählten Dateien wurden als versteckt markiert."
+
+#: manage-files.php:122 manage-files.php:140
+msgid "The selected files were marked as visible."
+msgstr "Die ausgewählten Dateien wurden als sichtbar markiert."
+
+#: manage-files.php:152
+msgid "The selected files were successfully unassigned."
+msgstr "Die Zuweisung der ausgewählten Dateien wurde erfolgreich aufgehoben."
+
+#: manage-files.php:173
+msgid "The selected files were deleted."
+msgstr "Die ausgewählten Dateien wurden gelöscht."
+
+#: manage-files.php:176
+msgid "Some files could not be deleted."
+msgstr "Einige Dateien konnten nicht gelöscht werden."
+
+#: manage-files.php:187
+msgid "Please select at least one file."
+msgstr "Bitte wählen Sie mindestens eine Datei."
+
+#: manage-files.php:428 manage-files.php:734
+msgid "Visible"
+msgstr "Sichtbar"
+
+#: manage-files.php:429 manage-files.php:734
+msgid "Hidden"
+msgstr "Versteckt"
+
+#: manage-files.php:455
+msgid "Selected files actions"
+msgstr "Aktionen für die ausgewählten Dateien"
+
+#: manage-files.php:472
+msgid "Download zipped"
+msgstr "Download gezippt"
+
+#: manage-files.php:474
+msgid "Set to hidden from everyone already assigned"
+msgstr "Auf \"unsichtbar für alle zugeordneten\" setzen"
+
+#: manage-files.php:475
+msgid "Set to visible to everyone already assigned"
+msgstr "Auf \"sichtbar für alle zugeordneten\" setzen"
+
+#: manage-files.php:481
+msgid "Set to hidden"
+msgstr "Auf unsichtbar setzen"
+
+#: manage-files.php:482
+msgid "Set to visible"
+msgstr "Auf sichtbar setzen"
+
+#: manage-files.php:483
+msgid "Unassign"
+msgstr "Nicht zuweisen"
+
+#: manage-files.php:519
+msgid "There are no files assigned to this category."
+msgstr "Es gibt keine Dateien die dieser Kategorie zugeordnet sind."
+
+#: manage-files.php:525
+msgid "There are no files assigned to this client."
+msgstr "Keine Dateien diesem Kunden zugeordnet."
+
+#: manage-files.php:528
+msgid "You have not uploaded any files for this account."
+msgstr "Sie haben keine Dateien für dieses Konto hochgeladen."
+
+#: manage-files.php:533
+msgid "There are no files for this client."
+msgstr "Keine Dateien für diesen Kunden vorhanden."
+
+#: manage-files.php:581
+msgid "Type"
+msgstr "Typ"
+
+#: manage-files.php:595
+msgid "Size"
+msgstr "Größe"
+
+#: manage-files.php:612
 msgid "Public permissions"
 msgstr "Öffentliche Zugriffsrechte"
 
-#: manage-files.php:578
+#: manage-files.php:617
 msgid "Expiry"
 msgstr "Ende der Dateilebensdauer"
 
-#: manage-files.php:590
+#: manage-files.php:629
 msgid "Download count"
 msgstr "Download Zähler"
 
-#: manage-files.php:661
+#: manage-files.php:700
 msgid "View information"
 msgstr "Informationen anzeigen"
 
-#: manage-files.php:673
+#: manage-files.php:712
 msgid "Does not expire"
 msgstr "Läuft nicht ab"
 
-#: manage-files.php:680
+#: manage-files.php:719
 msgid "Expired on"
 msgstr "Abgelaufen am"
 
-#: manage-files.php:684
+#: manage-files.php:723
 msgid "Expires on"
 msgstr "Läuft ab am"
 
-#: manage-files.php:702
+#: manage-files.php:741
 msgid "times"
 msgstr "mal"
 
-#: manage-files.php:728
+#: manage-files.php:767
 msgid "downloads"
 msgstr "Downloads"
 
-#: options.php:273
+#: options.php:288
 msgid "Some fields were not completed. Options could not be saved."
 msgstr ""
 "Einige Felder wurden nicht ausgefüllt. Einstellungen konnten nicht "
 "gespeichert werden."
 
-#: options.php:286
+#: options.php:301
 msgid "The file could not be moved to the corresponding folder."
 msgstr "Die Datei konnte nicht in den entsprechenden Ordner verschoben werden."
 
-#: options.php:287
+#: options.php:302
 msgid ""
 "This is most likely a permissions issue. If that's the case, it can be "
 "corrected via FTP by setting the chmod value of the"
@@ -3924,11 +4270,11 @@ msgstr ""
 "der Fall ist, kann das Problem per FTP gelöst werden, indem Sie den chmod-"
 "Wert der"
 
-#: options.php:289
+#: options.php:304
 msgid "directory to 755, or 777 as a last resource."
 msgstr "Ordner zu 755 oder 777 als letztes Mittel."
 
-#: options.php:290
+#: options.php:305
 msgid ""
 "If this doesn't solve the issue, try giving the same values to the "
 "directories above that one until it works."
@@ -3936,11 +4282,11 @@ msgstr ""
 "Wenn dies das Problem nicht löst, versuchen Sie dem Verzeichnis die gleichen "
 "Werte zu geben wie dem darüber, bis es funktioniert."
 
-#: options.php:294
+#: options.php:309
 msgid "The file you selected is not an allowed format."
 msgstr "Die ausgewählte Datei ist nicht in einem erlaubten Format."
 
-#: options.php:298
+#: options.php:313
 msgid "There was an error uploading the file. Please try again."
 msgstr "Fehler beim hochladen der Datei. Bitte versuchen Sie es erneut."
 
@@ -3956,15 +4302,15 @@ msgstr "Es sind keine Dateien verfügbar."
 msgid "Register new account"
 msgstr "Neues Konto registrieren"
 
-#: register.php:69
+#: register.php:63
 msgid "Thank you for registering. Your account has been activated."
 msgstr "Danke für Ihre Registrierung. Ihr Account wurde aktiviert."
 
-#: register.php:96
+#: register.php:91
 msgid "Account added correctly."
 msgstr "Konto erfolgreich hinzugefügt."
 
-#: register.php:100
+#: register.php:95
 msgid ""
 "Please remember that an administrator needs to approve your account before "
 "you can log in."
@@ -3972,15 +4318,15 @@ msgstr ""
 "Bitte beachten Sie dass ein Administrator Ihren Zugang genehmigen muss, "
 "bevor Sie sich anmelden können."
 
-#: register.php:104
+#: register.php:99
 msgid "You may now log in with your new credentials."
 msgstr "Sie können Sich jetzt mit Ihren neuen Zugangsdaten anmelden."
 
-#: register.php:126
+#: register.php:121
 msgid "Please contact a system administrator."
 msgstr "Bitte kontaktieren Sie einen System Administrator."
 
-#: register.php:135
+#: register.php:130
 msgid ""
 "A folder for this account could not be created. Probably because of a server "
 "configuration."
@@ -3988,14 +4334,14 @@ msgstr ""
 "Es konnte keinen Ordner für dieses Konto erstellt werden. Vielleicht liegt "
 "es an der Server-Configuration."
 
-#: register.php:140
+#: register.php:135
 msgid ""
 "The account could not be created. A folder with this name already exists."
 msgstr ""
 "Das Konto konnte nicht erstellt werden. Ein Ordner mit diesem Namen "
 "existiert bereits."
 
-#: register.php:150
+#: register.php:145
 msgid ""
 "An e-mail notification with login information was sent to the specified "
 "address."
@@ -4007,23 +4353,23 @@ msgstr ""
 msgid "Lost password"
 msgstr "Passwort vergessen"
 
-#: reset-password.php:204
+#: reset-password.php:206
 msgid "The supplied email address does not correspond to any user."
 msgstr "Es wurde kein Benutzer mit dieser E-Mail-Adresse gefunden."
 
-#: reset-password.php:207
+#: reset-password.php:209
 msgid "The request is not valid."
 msgstr "Die Anfrage ist ungültig."
 
-#: reset-password.php:210
+#: reset-password.php:212
 msgid "This request has expired. Please make a new one."
 msgstr "Diese Anfrage ist abgelaufen. Bitte stellen Sie eine neue."
 
-#: reset-password.php:213
+#: reset-password.php:215
 msgid "This request has already been completed. Please make a new one."
 msgstr "Diese Anfrage wurde bereits erledigt. Bitte stellen Sie eine neue."
 
-#: reset-password.php:216
+#: reset-password.php:218
 msgid ""
 "There are 3 unused requests done in less than 24 hs. Please wait until one "
 "expires (1 day since made) to make a new one."
@@ -4032,7 +4378,7 @@ msgstr ""
 "warten Sie bis eine abläuft (1 Tag nach der Erstellung), um eine neue zu "
 "erstellen."
 
-#: reset-password.php:229
+#: reset-password.php:231
 msgid ""
 "An e-mail with further instructions has been sent. Please check your inbox "
 "to proceed."
@@ -4040,25 +4386,33 @@ msgstr ""
 "Es wurde soeben ein E-Mail mit weiteren Instruktionen an Sie gesendet. Bitte "
 "überprüfen Sie Ihren Posteingang um fortzufahren."
 
-#: reset-password.php:233
+#: reset-password.php:235
 msgid "E-mail couldn't be sent."
 msgstr "E-Mail konnte nicht gesendet werden."
 
-#: reset-password.php:234 reset-password.php:251
+#: reset-password.php:236 reset-password.php:253
 msgid "If the problem persists, please contact an administrator."
 msgstr ""
 "Sollte das Problem weiter bestehen, setzen Sie sich bitte mit einem "
 "Administrator in Verbindung."
 
-#: reset-password.php:246
+#: reset-password.php:248
 msgid "Your new password has been set. You can now log in using it."
 msgstr ""
 "Ihr neues Passwort wurde erfolgreich angelegt. Sie können sich nun damit "
 "einloggen."
 
-#: reset-password.php:250
+#: reset-password.php:252
 msgid "Your new password couldn't be set."
 msgstr "Ihr neues Passwort konnte nicht angelegt werden."
+
+#: unblock-ip.php:24
+msgid "IP address succesfully unblocked"
+msgstr "IP-Adresse erfolgreich entsperrt"
+
+#: unblock-ip.php:43
+msgid "IP address"
+msgstr "IP Adresse"
 
 #: upload.php:42
 msgid ""
@@ -4086,7 +4440,7 @@ msgid "User edited correctly."
 msgstr "Systembenutzer erfolgreich bearbeitet."
 
 #: users-edit.php:154
-msgid "User created successfuly."
+msgid "User created successfully."
 msgstr "Systembenutzer erfolgreich angelegt."
 
 #: users-edit.php:194
@@ -4101,11 +4455,11 @@ msgstr "Kein Benutzer mit dieser ID."
 msgid "Users administration"
 msgstr "Benutzerverwaltung"
 
-#: users.php:43
+#: users.php:45
 msgid "The selected users were marked as active."
 msgstr "Die ausgewählten Systembenutzer wurden als aktiv markiert."
 
-#: users.php:63
+#: users.php:64
 msgid "You cannot deactivate your own account."
 msgstr "Sie können Ihr eigenes Konto nicht deaktivieren."
 
@@ -4113,29 +4467,55 @@ msgstr "Sie können Ihr eigenes Konto nicht deaktivieren."
 msgid "The selected users were marked as inactive."
 msgstr "Die ausgewählten Systembenutzer wurden als inaktiv markiert."
 
-#: users.php:86
+#: users.php:85
 msgid "You cannot delete your own account."
 msgstr "Sie können Ihr eigenes Konto nicht löschen."
 
-#: users.php:92
+#: users.php:90
 msgid "The selected users were deleted."
 msgstr "Die ausgewählten Systembenutzer wurden gelöscht."
 
-#: users.php:99
+#: users.php:96
 msgid "Please select at least one user."
 msgstr "Bitte wählen Sie mindestens einen Systembenutzer."
 
-#: users.php:172
+#: users.php:170
 msgid "All roles"
 msgstr "Alle Rollen"
 
-#: users.php:213
+#: users.php:211
 msgid "Selected users actions"
 msgstr "Aktionen für die ausgewählten Systembenutzer"
 
-#: users.php:237
-msgid "users"
-msgstr "Systembenutzer"
+#~ msgid "activities"
+#~ msgstr "Aktivitäten"
+
+#~ msgid "categories"
+#~ msgstr "Kategorien"
+
+#~ msgid "requests"
+#~ msgstr "Anfrage"
+
+#~ msgid "clients"
+#~ msgstr "Kunden"
+
+#~ msgid "groups"
+#~ msgstr "Gruppen"
+
+#~ msgid "Showing"
+#~ msgstr "Angezeigt"
+
+#~ msgid "files"
+#~ msgstr "Dateien"
+
+#~ msgid "For example, d/m/Y h:i:s will result in something like"
+#~ msgstr "Zum Beispiel wird d/m/y h:i:s so ausgeben"
+
+#~ msgid "this page"
+#~ msgstr "diese Seite"
+
+#~ msgid "users"
+#~ msgstr "Systembenutzer"
 
 #~ msgid "Use XSendFile to serve files"
 #~ msgstr "Benutze XSendFile um Dateien bereitzustellen"

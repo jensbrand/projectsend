@@ -1,6 +1,6 @@
 <?php
 /**
- * Allows to hide, show or delete the files assigend to the
+ * Allows to hide, show or delete the files assigned to the
  * selected client.
  *
  * @package ProjectSend
@@ -13,6 +13,8 @@ $active_nav = 'files';
 $page_title = __('Manage files','cftp_admin');
 
 $page_id = 'manage_files';
+
+$current_url = get_form_action_with_existing_parameters(basename(__FILE__), array( 'modify_id', 'modify_type' ));
 
 /**
  * Used to distinguish the current page results.
@@ -69,113 +71,130 @@ if (isset($_GET['category'])) {
     }
 }
 
+// Setting the filter options to avoid duplicates
+$filter_options_uploader = array(
+    '0' => __('Uploader','cftp_admin'),
+);
+$sql_uploaders = $dbh->prepare("SELECT uploader FROM " . TABLE_FILES . " GROUP BY uploader");
+$sql_uploaders->execute();
+$sql_uploaders->setFetchMode(PDO::FETCH_ASSOC);
+while( $data_uploaders = $sql_uploaders->fetch() ) {
+    $filter_options_uploader[$data_uploaders['uploader']] = $data_uploaders['uploader'];
+}
+
+$filter_options_assigned = array(
+    '0'	=> __('All files','cftp_admin'),
+    'assigned' => __('Assigned','cftp_admin'),
+    'not_assigned' => __('Not assigned','cftp_admin'),
+);
+
+/**
+ * Apply the corresponding action to the selected files.
+ */
+if (isset($_POST['action'])) {
+    /** Continue only if 1 or more files were selected. */
+    if (!empty($_POST['batch'])) {
+        $selected_files = array_map('intval',array_unique($_POST['batch']));
+
+        switch ($_POST['action']) {
+            case 'hide':
+                /**
+                 * Changes the value on the "hidden" column value on the database.
+                 * This files are not shown on the client's file list. They are
+                 * also not counted on the dashboard.php files count when the logged in
+                 * account is the client.
+                 */
+                foreach ($selected_files as $file_id) {
+                    $file = new \ProjectSend\Classes\Files;
+                    $file->get($file_id);
+                    $file->hide($results_type, $_POST['modify_id']);
+                }
+
+                $flash->success(__('The selected files were marked as hidden.', 'cftp_admin'));
+            break;
+            case 'show':
+                foreach ($selected_files as $file_id) {
+                    $file = new \ProjectSend\Classes\Files;
+                    $file->get($file_id);
+                    $file->show($results_type, $_POST['modify_id']);
+                }
+
+                $flash->success(__('The selected files were marked as visible.', 'cftp_admin'));
+            break;
+            case 'hide_everyone':
+                foreach ($selected_files as $file_id) {
+                    $file = new \ProjectSend\Classes\Files;
+                    $file->get($file_id);
+                    $file->hideFromEveryone();
+                }
+
+                $flash->success(__('The selected files were marked as hidden.', 'cftp_admin'));
+            break;
+            case 'show_everyone':
+                foreach ($selected_files as $file_id) {
+                    $file = new \ProjectSend\Classes\Files;
+                    $file->get($file_id);
+                    $file->showToEveryone();
+                }
+
+                $flash->success(__('The selected files were marked as visible.', 'cftp_admin'));
+            break;
+            case 'unassign':
+                /**
+                 * Remove the file from this client or group only.
+                 */
+                foreach ($selected_files as $file_id) {
+                    $file = new \ProjectSend\Classes\Files;
+                    $file->get($file_id);
+                    $file->removeAssignment($results_type, $_POST['modify_id']);
+                }
+
+                $flash->success(__('The selected files were successfully unassigned.', 'cftp_admin'));
+            break;
+            case 'delete':
+                $delete_results	= array(
+                    'ok' => 0,
+                    'errors' => 0,
+                );
+                foreach ($selected_files as $index => $file_id) {
+                    if (!empty($file_id)) {
+                        $file = new \ProjectSend\Classes\Files;
+                        $file->get($file_id);
+                        if ($file->deleteFiles()) {
+                            $delete_results['ok']++;
+                        }
+                        else {
+                            $delete_results['errors']++;
+                        }
+                    }
+                }
+
+                if ( $delete_results['ok'] > 0 ) {
+                    $flash->success(__('The selected files were deleted.', 'cftp_admin'));
+                }
+                if ( $delete_results['errors'] > 0 ) {
+                    $flash->error(__('Some files could not be deleted.', 'cftp_admin'));
+                }
+            break;
+            case 'edit':
+                $url = BASE_URI.'files-edit.php?ids='.implode(',', $selected_files);
+                header("Location: ".$url);
+                exit;
+            break;
+        }
+    }
+    else {
+        $flash->error(__('Please select at least one file.', 'cftp_admin'));
+    }
+
+    ps_redirect($current_url);
+}
+
 include_once ADMIN_VIEWS_DIR . DS . 'header.php';
 ?>
 <div class="row">
     <div class="col-xs-12">
         <?php
-            /**
-             * Apply the corresponding action to the selected files.
-             */
-            if(isset($_GET['action'])) {
-                /** Continue only if 1 or more files were selected. */
-                if(!empty($_GET['batch'])) {
-                    $selected_files = array_map('intval',array_unique($_GET['batch']));
-                    switch($_GET['action']) {
-                        case 'hide':
-                            /**
-                             * Changes the value on the "hidden" column value on the database.
-                             * This files are not shown on the client's file list. They are
-                             * also not counted on the dashboard.php files count when the logged in
-                             * account is the client.
-                             */
-                            foreach ($selected_files as $file_id) {
-                                $file = new \ProjectSend\Classes\Files;
-                                $file->get($file_id);
-                                $file->hide($results_type, $_GET['modify_id']);
-                            }
-                            $msg = __('The selected files were marked as hidden.','cftp_admin');
-                            echo system_message('success',$msg);
-                            break;
-                        case 'show':
-                            foreach ($selected_files as $file_id) {
-                                $file = new \ProjectSend\Classes\Files;
-                                $file->get($file_id);
-                                $file->show($results_type, $_GET['modify_id']);
-                            }
-                            $msg = __('The selected files were marked as visible.','cftp_admin');
-                            echo system_message('success',$msg);
-                            break;
-                        case 'hide_everyone':
-                            foreach ($selected_files as $file_id) {
-                                $file = new \ProjectSend\Classes\Files;
-                                $file->get($file_id);
-                                $file->hideFromEveryone();
-                            }
-                            $msg = __('The selected files were marked as hidden.','cftp_admin');
-                            echo system_message('success',$msg);
-                            break;
-                        case 'show_everyone':
-                            foreach ($selected_files as $file_id) {
-                                $file = new \ProjectSend\Classes\Files;
-                                $file->get($file_id);
-                                $file->showToEveryone();
-                            }
-                            $msg = __('The selected files were marked as visible.','cftp_admin');
-                            echo system_message('success',$msg);
-                            break;
-                        case 'unassign':
-                            /**
-                             * Remove the file from this client or group only.
-                             */
-                            foreach ($selected_files as $file_id) {
-                                $file = new \ProjectSend\Classes\Files;
-                                $file->get($file_id);
-                                $file->removeAssignment($results_type, $_GET['modify_id']);
-                            }
-                            $msg = __('The selected files were succesfully unassigned.','cftp_admin');
-                            echo system_message('success',$msg);
-                            break;
-                        case 'delete':
-                            $delete_results	= array(
-                                                    'ok'		=> 0,
-                                                    'errors'	=> 0,
-                                                );
-                            foreach ($selected_files as $index => $file_id) {
-                                if (!empty($file_id)) {
-                                    $file = new \ProjectSend\Classes\Files;
-                                    $file->get($file_id);
-                                    if ($file->deleteFiles()) {
-                                        $delete_results['ok']++;
-                                    }
-                                    else {
-                                        $delete_results['errors']++;
-                                    }
-                                }
-                            }
-
-                            if ( $delete_results['ok'] > 0 ) {
-                                $msg = __('The selected files were deleted.','cftp_admin');
-                                echo system_message('success',$msg);
-                            }
-                            if ( $delete_results['errors'] > 0 ) {
-                                $msg = __('Some files could not be deleted.','cftp_admin');
-                                echo system_message('danger',$msg);
-                            }
-                            break;
-                        case 'edit':
-                            $url = BASE_URI.'files-edit.php?ids='.implode(',', $selected_files);
-                            header("Location: ".$url);
-                            exit;
-                            break;
-                    }
-                }
-                else {
-                    $msg = __('Please select at least one file.','cftp_admin');
-                    echo system_message('danger',$msg);
-                }
-            }
-            
             /**
              * Global form action
              */
@@ -262,9 +281,29 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                     $params[':uploader'] = $_GET['uploader'];
                 }
 
+                /**
+                 * Filter by assignations
+                 */	
+                if(isset($_GET['assigned']) && !empty($_GET['assigned'])) {
+                    if (array_key_exists($_GET['assigned'], $filter_options_assigned)) {
+                        $assigned_files_id = array();
+                        $statement = $dbh->prepare("SELECT DISTINCT file_id FROM " . TABLE_FILES_RELATIONS);
+                        $statement->execute();
+                        $statement->setFetchMode(PDO::FETCH_ASSOC);
+                        while ( $file_data = $statement->fetch() ) {
+                            $assigned_files_id[] = $file_data['file_id'];
+                        }
+                        $assigned_files_id = implode(',',$assigned_files_id);
+            
+                        /** Overwrite the parameter set previously */
+                        $pre = ($_GET['assigned'] == 'not_assigned') ? 'NOT ' : '';
+                        $conditions[] = $pre."FIND_IN_SET(id, :files)";
+                        $params[':files'] = $assigned_files_id;
+                    }
+                }
 
                 /**
-                 * If the user is an uploader, or a client is editing his files
+                 * If the user is an uploader, or a client is editing their files
                  * only show files uploaded by that account.
                 */
                 if (CURRENT_USER_LEVEL == '7' || CURRENT_USER_LEVEL == '0') {
@@ -348,24 +387,24 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                         if( CURRENT_USER_LEVEL != '0' && $results_type == 'global') {
                     ?>
                         <form action="manage-files.php" name="files_filters" method="get" class="form-inline form_filters">
-                            <?php form_add_existing_parameters( array('hidden', 'action', 'uploader') ); ?>
+                            <?php form_add_existing_parameters( array('hidden', 'action', 'uploader', 'assigned') ); ?>
                             <div class="form-group group_float">
                                 <select name="uploader" id="uploader" class="txtfield form-control">
                                     <?php
-                                        $status_options = array(
-                                                                '0'		=> __('Uploader','cftp_admin'),
-                                                            );
-                                        $sql_uploaders = $dbh->prepare("SELECT uploader FROM " . TABLE_FILES . " GROUP BY uploader");
-                                        $sql_uploaders->execute();
-                                        $sql_uploaders->setFetchMode(PDO::FETCH_ASSOC);
-
-                                        while( $data_uploaders = $sql_uploaders->fetch() ) {
-                                            $status_options[$data_uploaders['uploader']] = $data_uploaders['uploader'];
-                                        }
-
-                                        foreach ( $status_options as $val => $text ) {
+                                        foreach ( $filter_options_uploader as $val => $text ) {
                                     ?>
                                             <option value="<?php echo $val; ?>" <?php if ( isset( $_GET['uploader'] ) && $_GET['uploader'] == $val ) { echo 'selected="selected"'; } ?>><?php echo $text; ?></option>
+                                    <?php
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="form-group group_float">
+                                <select name="assigned" id="assigned" class="txtfield form-control">
+                                    <?php
+                                        foreach ( $filter_options_assigned as $val => $text ) {
+                                    ?>
+                                            <option value="<?php echo $val; ?>" <?php if ( isset( $_GET['assigned'] ) && $_GET['assigned'] == $val ) { echo 'selected="selected"'; } ?>><?php echo $text; ?></option>
                                     <?php
                                         }
                                     ?>
@@ -407,8 +446,8 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
             </div>
 
 
-            <form action="manage-files.php" name="files_list" method="get" class="form-inline batch_actions">
-                <?php form_add_existing_parameters( array( 'modify_id', 'modify_type' ) ); ?>
+            <form action="<?php echo $current_url; ?>" name="files_list" method="post" class="form-inline batch_actions">
+                <?php addCsrf(); ?>
                 <div class="form_actions_right">
                     <div class="form_actions">
                         <div class="form_actions_submit">
@@ -417,8 +456,8 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                                 <?php
                                     if (isset($search_on)) {
                                 ?>
-                                    <input type="hidden" name="modify_type" id="modify_type" value="<?php echo $search_on; ?>" />
-                                    <input type="hidden" name="modify_id" id="modify_id" value="<?php echo $this_id; ?>" />
+                                        <input type="hidden" name="modify_type" id="modify_type" value="<?php echo $search_on; ?>" />
+                                        <input type="hidden" name="modify_id" id="modify_id" value="<?php echo $this_id; ?>" />
                                 <?php
                                     }
                                 ?>
@@ -464,7 +503,7 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                 <div class="clear"></div>
         
                 <div class="form_actions_count">
-                    <p class="form_count_total"><?php _e('Found','cftp_admin'); ?>: <span><?php echo $count_for_pagination; ?> <?php _e('files','cftp_admin'); ?></span></p>
+                    <p><?php echo sprintf(__('Found %d elements','cftp_admin'), (int)$count_for_pagination); ?>
                 </div>
         
                 <div class="clear"></div>

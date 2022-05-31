@@ -14,6 +14,7 @@ class Auth
     private $dbh;
     private $logger;
     private $errorstate;
+    private $bfchecker;
 
     public $user;
 
@@ -23,8 +24,11 @@ class Auth
             global $dbh;
         }
 
+        global $bfchecker;
+
         $this->dbh = $dbh;
         $this->logger = new \ProjectSend\Classes\ActionsLog;
+        $this->bfchecker = $bfchecker;
     }
 
     public function setLanguage($language = null)
@@ -96,8 +100,10 @@ class Auth
 			}
 		}
 		else {
-			//$this->errorstate = 'wrong_username';
-			$this->errorstate = 'invalid_credentials';
+            //$this->errorstate = 'wrong_username';
+            $this->bfchecker->addFailedLoginAttempt($username, get_client_ip());
+
+            $this->errorstate = 'invalid_credentials';
         }
 
 		$results = [
@@ -112,8 +118,7 @@ class Auth
     /** Social Login via hybridauth */
     public function socialLogin($provider) {
         if (empty($provider)) {
-            header("location:".PAGE_STATUS_CODE_404);
-            exit;
+            exitWithErrorCode(404);
         }
 
         //Attempt to authenticate users with a provider by name
@@ -128,8 +133,8 @@ class Auth
             case 'microsoftgraph':
                 break;
             default:
-                header("location:".PAGE_STATUS_CODE_404);
-                exit;
+                exitWithErrorCode(404);
+                break;
         }
             
         global $hybridauth;

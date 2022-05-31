@@ -33,10 +33,11 @@ class TableGenerate
 	 * to the current page + existing $_GET parameters, but adding
 	 * the orderby and order ones.
 	 * If "order" is set and the current column in the loop contains
-	 * the current sort order needs to be inversed on the link.
+	 * the current sort order needs to be inverted on the link.
 	 */
 	private function buildSortableThContent( $sort_url, $is_current_sorted, $content ) {
 		$url_parse = parse_url( $_SERVER['REQUEST_URI'] );
+        $url_parts = explode('/', $url_parse['path']);
 
 		if ( !empty( $_GET ) ) {
 			$new_url_parameters = $_GET;
@@ -63,7 +64,7 @@ class TableGenerate
 		}
 		$query = http_build_query($params);
 		
-		$build_url = BASE_URI . substr( $url_parse['path'], 1 ) . '?' . $query;
+		$build_url = BASE_URI . end($url_parts) . '?' . $query;
 
 		$sortable_link = '<a href="' . $build_url . '">';
 		$sortable_link .= $content;

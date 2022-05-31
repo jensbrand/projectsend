@@ -123,7 +123,7 @@ class Emails
 		*/
 		$this->strings_client_edited = array(
             'subject' => (get_option('email_client_edited_subject_customize') == 1 && !empty(get_option('email_client_edited_subject'))) ? get_option('email_client_edited_subject') : __('A client has changed memberships requests','cftp_admin'),
-			'body' => __('A client on you site has just changed his groups membership requests and needs your approval.','cftp_admin'),
+			'body' => __('A client on your site has just changed their groups membership requests and needs your approval.','cftp_admin'),
 			'label_name' => __('Full name','cftp_admin'),
 			'label_user' => __('Username','cftp_admin'),
 			'label_request' => __('The client requests access to the following group(s)','cftp_admin'),
@@ -186,7 +186,12 @@ class Emails
             case 'test_settings':
                     $filename = 'test_settings.html';
                     $customize_body = 0;
-                    $body_text_option	= null;
+                    $body_text_option = null;
+                break;
+            case 'generic':
+                    $filename = 'generic.html';
+                    $customize_body = 0;
+                    $body_text_option = null;
                 break;
 		}
 
@@ -204,7 +209,7 @@ class Emails
 
 		return $body;
 	}
-	
+
 	/**
 	 * Prepare the body for the "New Client" e-mail.
 	 * The new username and password are also sent.
@@ -489,7 +494,7 @@ class Emails
 
 	/**
 	 * Prepare the body for the e-mail sent when a client changes group
-	 *  membeship requests.
+	 *  membership requests.
 	 */
 	private function email_client_edited($username,$fullname,$memberships_requests)
 	{
@@ -543,15 +548,33 @@ class Emails
 				);
 	}
 
-
 	/**
-	 * Prepare the body for the e-mail sent when a client changes group
-	 *  membeship requests.
+	 * E-mail sent when testing email settings.
 	 */
 	private function email_test_settings($message)
 	{
         $subject = __('Email configuration test', 'cftp_admin');
 		$this->email_body = $this->email_prepare_body('test_settings');
+		$this->email_body = str_replace(
+									array('%BODY%', '%SUBJECT%'),
+									array(
+                                        $message,
+                                        $subject,
+										),
+									$this->email_body
+								);
+		return array(
+					'subject' => $subject,
+					'body' => $this->email_body
+				);
+	}
+
+    /**
+	 * Generic w-mail with custom content only
+	 */
+	private function email_generic($subject, $message = null)
+	{
+		$this->email_body = $this->email_prepare_body('generic');
 		$this->email_body = str_replace(
 									array('%BODY%', '%SUBJECT%'),
 									array(
@@ -603,6 +626,7 @@ class Emails
         $this->memberships	= (!empty($arguments['memberships'])) ? $arguments['memberships'] : '';
         
         $test_message = (!empty($arguments['message'])) ? filter_var($arguments['message'], FILTER_SANITIZE_STRING) : __('This is a test message', 'cftp_admin');
+        $generic_message = (!empty($arguments['message'])) ? $arguments['message'] : null;
 
         $this->try_bcc = false;
         $this->email_successful = false;
@@ -614,6 +638,11 @@ class Emails
                 $this->body_variables = [ $test_message ];
                 $this->addresses = $arguments['to'];
                 $debug = true;
+			break;
+            case 'generic':
+                $subject = (!empty($arguments['subject'])) ? $arguments['subject'] : sprintf(__('Sent from %s', 'cftp_admin'), get_option('this_install_title'));
+                $this->body_variables = [ $subject, $generic_message ];
+                $this->addresses = $arguments['to'];
 			break;
             case 'new_files_by_user':
                 $this->body_variables = [ $this->files_list, ];

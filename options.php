@@ -53,6 +53,7 @@ switch ( $section ) {
                                 'mail_ssl_verify_peer',
                                 'mail_ssl_verify_peer_name',
                                 'mail_ssl_allow_self_signed',
+                                'notifications_send_when_saving_files',
                             );
         break;
     case 'security':
@@ -76,6 +77,17 @@ switch ( $section ) {
         $checkboxes		= array(
                             );
         break;
+    case 'cron':
+        $section_title	= __('Scheduled tasks (cron)','cftp_admin');
+        $checkboxes	= array(
+            'cron_enable',
+            'cron_command_line_only',
+            'cron_send_emails',
+            'cron_delete_expired_files',
+            'cron_delete_orphan_files',
+            'cron_email_summary_send',
+        );
+    break;
     default:
         $location = BASE_URI . 'options.php?section=general';
         header("Location: $location");
@@ -95,7 +107,7 @@ $logo_file_info = generate_logo_url();
 // Clear logo
 if ($section == 'branding' && !empty($_GET['clear']) && $_GET['clear'] == 'logo') {
     save_option('logo_filename', null);
-    $flash->success(__('Options updated succesfuly.', 'cftp_admin'));
+    $flash->success(__('Options updated successfully.', 'cftp_admin'));
     $location = BASE_URI . 'options.php?section=branding';
     header("Location: $location");
     exit;
@@ -142,6 +154,9 @@ if ($_POST) {
         'ldap_admin_user',
         'ldap_admin_password',
         'ldap_search_base',
+        'ip_whitelist',
+        'ip_blacklist',
+        'cron_email_summary_address_to',
     ];
 
     foreach ($checkboxes as $checkbox) {
@@ -222,7 +237,7 @@ if ($_POST) {
         ],
     ]);
     
-    /** Redirect so the options are reflected immediatly */
+    /** Redirect so the options are reflected immediately */
     while (ob_get_level()) ob_end_clean();
     $section_redirect = html_output($_POST['section']);
     $location = BASE_URI . 'options.php?section=' . $section_redirect;
@@ -262,7 +277,7 @@ $allowed_file_types = implode(',',$allowed_file_types);
             if (isset($_GET['status'])) {
                 switch ($_GET['status']) {
                     case '1':
-                        $msg = __('Options updated succesfuly.','cftp_admin');
+                        $msg = __('Options updated successfully.','cftp_admin');
                         echo system_message('success',$msg);
                         break;
                     case '2':
@@ -306,7 +321,7 @@ $allowed_file_types = implode(',',$allowed_file_types);
             <div class="white-box-interior">
 
                 <form action="options.php" name="options" id="options" method="post" enctype="multipart/form-data" class="form-horizontal">
-                    <input type="hidden" name="csrf_token" value="<?php echo getCsrfToken(); ?>" />
+                    <?php addCsrf(); ?>
                     <input type="hidden" name="section" value="<?php echo $section; ?>">
 
                     <?php

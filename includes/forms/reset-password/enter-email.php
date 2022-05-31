@@ -1,5 +1,5 @@
 <form action="reset-password.php" name="reset_password_enter_email" id="reset_password_enter_email" method="post" role="form">
-    <input type="hidden" name="csrf_token" value="<?php echo getCsrfToken(); ?>" />
+    <?php addCsrf(); ?>
     <fieldset>
         <input type="hidden" name="form_type" id="form_type" value="new_request" />
 
@@ -9,6 +9,8 @@
         </div>
 
         <p><?php _e("Please enter your account's e-mail address. You will receive a link to continue the process.",'cftp_admin'); ?></p>
+
+        <?php recaptcha2RenderWidget(); ?>
 
         <div class="inside_form_buttons">
             <button type="submit" name="submit" class="btn btn-wide btn-primary"><?php _e('Get a new password','cftp_admin'); ?></button>

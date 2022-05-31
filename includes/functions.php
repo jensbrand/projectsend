@@ -8,6 +8,30 @@
 
 use enshrined\svgSanitize\Sanitizer;
 
+function try_query($queries)
+{
+    global $dbh;
+
+    if ( empty( $error_str ) ) {
+        global $error_str;
+    }
+    foreach ($queries as $i => $value) {
+        try {
+            $statement = $dbh->prepare( $queries[$i]['query'] );
+            $params = $queries[$i]['params'];
+            if ( !empty( $params ) ) {
+                foreach ( $params as $name => $value ) {
+                    $statement->bindValue( $name, $value );
+                }
+            }
+            $statement->execute( $params );
+        } catch (Exception $e) {
+            $error_str .= $e . '<br>';
+        }
+    }
+    return $statement;
+}
+
 function check_server_requirements()
 {
     $absParent = dirname( dirname(__FILE__) );
@@ -131,6 +155,13 @@ function forceLogout($error_type = null)
     }    
 }
 
+/**
+ * Check if curl is enabled
+ */
+function curlIsEnabled(){
+    return function_exists('curl_version');
+}
+
 /** Gets a Json file from and url and caches the result */
 function getJson($url, $cache_time) {
     $cache_dir = JSON_CACHE_DIR;
@@ -150,12 +181,25 @@ function getJson($url, $cache_time) {
         unlink($cacheFile);
     }
 
-    $json = file_get_contents($url);
-
-    $fh = fopen($cacheFile, 'w');
-    fwrite($fh, time() . "\n");
-    fwrite($fh, $json);
-    fclose($fh);
+    if (curlIsEnabled()) {
+        $ch = curl_init();
+    
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, CURL_TIMEOUT_SECONDS);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, CURL_TIMEOUT_SECONDS);
+    
+        $json = curl_exec($ch);
+        curl_close($ch);
+    
+        $fh = fopen($cacheFile, 'w');
+        fwrite($fh, time() . "\n");
+        fwrite($fh, $json);
+        fclose($fh);
+    } else {
+        $json = file_get_contents($url);
+    }
 
     return $json;
 }
@@ -187,13 +231,13 @@ function sql_add_order( $table, $column = 'id', $initial_order = 'ASC' )
 	}
 }
 
-function generate_password()
+function generate_password($length = 12)
 {
 	$error_unexpected	= __('An unexpected error has occurred', 'cftp_admin');
 	$error_os_fail		= __('Could not generate a random password', 'cftp_admin');
 
 	try {
-		$password = random_bytes(12);
+		$password = random_bytes($length);
 	} catch (TypeError $e) {
 		die($error_unexpected);
 	} catch (Error $e) {
@@ -208,7 +252,7 @@ function generate_password()
 
 /**
  * Reads the lang folder and scans for .mo files.
- * Returns an array of avaiable languages.
+ * Returns an array of available languages.
  */
 function get_available_languages()
 {
@@ -835,7 +879,7 @@ function system_message( $type, $message, $div_id = '' )
 
 
 /**
- * Function used accross the system to determine if the current logged in
+ * Function used across the system to determine if the current logged in
  * account has permission to do something.
  *
  */
@@ -972,7 +1016,7 @@ function get_current_url()
 	$pageURL .= $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
 
 	/**
-	 * Check if we are accesing the install folder or the index.php file directly
+	 * Check if we are accessing the install folder or the index.php file directly
 	 */
 	$extension = substr($pageURL,-4);
 	if ($extension=='.php') {
@@ -983,6 +1027,21 @@ function get_current_url()
 		$pageURL = substr($pageURL,0,-8);
 		return $pageURL;
 	}
+}
+
+function file_is_allowed($filename)
+{
+    if ( true === CAN_UPLOAD_ANY_FILE_TYPE ) {
+        return true;
+    }
+
+    $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+    $allowed_extensions = explode(',', strtolower(get_option('allowed_file_types')) );
+    if (in_array($extension, $allowed_extensions)) {
+        return true;
+    }
+
+    return false;    
 }
 
 /**
@@ -1069,14 +1128,18 @@ function isEnabled(string $func) {
 
 /**
  * Delete just one file.
- * Used on the files managment page.
+ * Used on the files management page.
  */
 function delete_file_from_disk($filename)
 {
 	if ( file_exists( $filename ) ) {
-		chmod($filename, 0777);
-		unlink($filename);
-	}
+		@chmod($filename, 0777);
+		return unlink($filename);
+	} else {
+        return true;
+    }
+
+    return false;
 }
 
 /**
@@ -1094,7 +1157,7 @@ function delete_recursive($dir)
 						rmdir( $dir . $file );
 					}
 					else {
-						chmod($dir.$file, 0777);
+						@chmod($dir.$file, 0777);
 						unlink($dir.$file);
 					}
 				}
@@ -1475,7 +1538,7 @@ function add_page_id($id)
 }
 
 /**
- * Creates a standarized download link. Used on
+ * Creates a standardized download link. Used on
  * each template.
  */
 function make_download_link($file_info)
@@ -1506,7 +1569,7 @@ function generateSafeFilename($filename)
     $filename = $original_filename['filename'];
     $extension = $original_filename['extension'];
 
-    // Replace accent characters, forien languages
+    // Replace accent characters, foreign languages
     $search = array('À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Æ', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Ø', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'ß', 'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ', 'Ā', 'ā', 'Ă', 'ă', 'Ą', 'ą', 'Ć', 'ć', 'Ĉ', 'ĉ', 'Ċ', 'ċ', 'Č', 'č', 'Ď', 'ď', 'Đ', 'đ', 'Ē', 'ē', 'Ĕ', 'ĕ', 'Ė', 'ė', 'Ę', 'ę', 'Ě', 'ě', 'Ĝ', 'ĝ', 'Ğ', 'ğ', 'Ġ', 'ġ', 'Ģ', 'ģ', 'Ĥ', 'ĥ', 'Ħ', 'ħ', 'Ĩ', 'ĩ', 'Ī', 'ī', 'Ĭ', 'ĭ', 'Į', 'į', 'İ', 'ı', 'Ĳ', 'ĳ', 'Ĵ', 'ĵ', 'Ķ', 'ķ', 'Ĺ', 'ĺ', 'Ļ', 'ļ', 'Ľ', 'ľ', 'Ŀ', 'ŀ', 'Ł', 'ł', 'Ń', 'ń', 'Ņ', 'ņ', 'Ň', 'ň', 'ŉ', 'Ō', 'ō', 'Ŏ', 'ŏ', 'Ő', 'ő', 'Œ', 'œ', 'Ŕ', 'ŕ', 'Ŗ', 'ŗ', 'Ř', 'ř', 'Ś', 'ś', 'Ŝ', 'ŝ', 'Ş', 'ş', 'Š', 'š', 'Ţ', 'ţ', 'Ť', 'ť', 'Ŧ', 'ŧ', 'Ũ', 'ũ', 'Ū', 'ū', 'Ŭ', 'ŭ', 'Ů', 'ů', 'Ű', 'ű', 'Ų', 'ų', 'Ŵ', 'ŵ', 'Ŷ', 'ŷ', 'Ÿ', 'Ź', 'ź', 'Ż', 'ż', 'Ž', 'ž', 'ſ', 'ƒ', 'Ơ', 'ơ', 'Ư', 'ư', 'Ǎ', 'ǎ', 'Ǐ', 'ǐ', 'Ǒ', 'ǒ', 'Ǔ', 'ǔ', 'Ǖ', 'ǖ', 'Ǘ', 'ǘ', 'Ǚ', 'ǚ', 'Ǜ', 'ǜ', 'Ǻ', 'ǻ', 'Ǽ', 'ǽ', 'Ǿ', 'ǿ'); 
     $replace = array('A', 'A', 'A', 'A', 'A', 'A', 'AE', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'D', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U', 'U', 'Y', 's', 'a', 'a', 'a', 'a', 'a', 'a', 'ae', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'y', 'y', 'A', 'a', 'A', 'a', 'A', 'a', 'C', 'c', 'C', 'c', 'C', 'c', 'C', 'c', 'D', 'd', 'D', 'd', 'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'E', 'e', 'G', 'g', 'G', 'g', 'G', 'g', 'G', 'g', 'H', 'h', 'H', 'h', 'I', 'i', 'I', 'i', 'I', 'i', 'I', 'i', 'I', 'i', 'IJ', 'ij', 'J', 'j', 'K', 'k', 'L', 'l', 'L', 'l', 'L', 'l', 'L', 'l', 'l', 'l', 'N', 'n', 'N', 'n', 'N', 'n', 'n', 'O', 'o', 'O', 'o', 'O', 'o', 'OE', 'oe', 'R', 'r', 'R', 'r', 'R', 'r', 'S', 's', 'S', 's', 'S', 's', 'S', 's', 'T', 't', 'T', 't', 'T', 't', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'W', 'w', 'Y', 'y', 'Y', 'Z', 'z', 'Z', 'z', 'Z', 'z', 's', 'f', 'O', 'o', 'U', 'u', 'A', 'a', 'I', 'i', 'O', 'o', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'A', 'a', 'AE', 'ae', 'O', 'o'); 
     $filename = str_replace($search, $replace, $filename);
@@ -1809,17 +1872,17 @@ function countGroupsRequestsForExistingClients()
 // Function to get the client ip address
 function get_client_ip() {
     $ipaddress = '';
-    if ($_SERVER['HTTP_CLIENT_IP'])
+    if (!empty($_SERVER['HTTP_CLIENT_IP']))
         $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
+    else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
         $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    else if($_SERVER['HTTP_X_FORWARDED'])
+    else if (!empty($_SERVER['HTTP_X_FORWARDED']))
         $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-    else if($_SERVER['HTTP_FORWARDED_FOR'])
+    else if (!empty($_SERVER['HTTP_FORWARDED_FOR']))
         $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-    else if($_SERVER['HTTP_FORWARDED'])
+    else if (!empty($_SERVER['HTTP_FORWARDED']))
         $ipaddress = $_SERVER['HTTP_FORWARDED'];
-    else if($_SERVER['REMOTE_ADDR'])
+    else if (!empty($_SERVER['REMOTE_ADDR']))
         $ipaddress = $_SERVER['REMOTE_ADDR'];
     else
         $ipaddress = 'UNKNOWN';
@@ -1848,7 +1911,19 @@ function sanitize_filename_for_download($file_name)
     return $file_name;
 }
 
-function getRecaptcha2Request()
+function recaptcha2RenderWidget()
+{
+    if ( defined('RECAPTCHA_AVAILABLE') ) {
+?>
+        <div class="form-group">
+            <!-- <label><?php _e('Verification','cftp_admin'); ?></label> -->
+            <div class="g-recaptcha" data-sitekey="<?php echo get_option('recaptcha_site_key'); ?>"></div>
+        </div>
+<?php
+    }
+}
+
+function recaptcha2GetRequest()
 {
     $recaptcha_request = null;
 
@@ -1860,4 +1935,47 @@ function getRecaptcha2Request()
     }
 
     return $recaptcha_request;
+}
+
+function recaptcha2ValidateRequest($redirect = true)
+{
+    $validation_passed = false;
+
+    if ( defined('RECAPTCHA_AVAILABLE') ) {
+        $validation = new \ProjectSend\Classes\Validation;
+        $validation->validate('recaptcha', recaptcha2GetRequest());
+        if ($validation->passed()) {
+            $validation_passed = true;
+        }
+    } else {
+        $validation_passed = true;
+    }
+
+    if ($redirect && !$validation_passed) {
+        exitWithErrorCode(403);
+    }
+
+    return $validation_passed;
+}
+
+function ps_redirect($location, $status = 303)
+{
+    header("Location: $location", true, $status);
+    exit;
+}
+
+function exitWithErrorCode($code = 403)
+{
+    switch ($code) {
+        default:
+        case 403:
+            $url = PAGE_STATUS_CODE_403;
+            break;
+        case 404:
+            $url = PAGE_STATUS_CODE_404;
+            break;
+    }
+    header('Location:' . $url);
+    exit;
+
 }

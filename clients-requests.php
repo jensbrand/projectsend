@@ -218,7 +218,7 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
             </div>
 
             <form action="<?php echo $this_page; ?>" name="clients_list" method="post" class="form-inline batch_actions">
-                <input type="hidden" name="csrf_token" value="<?php echo getCsrfToken(); ?>" />
+                <?php addCsrf(); ?>
 
                 <?php form_add_existing_parameters(); ?>
                 <div class="form_actions_right">
@@ -248,7 +248,7 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                 <div class="clear"></div>
 
                 <div class="form_actions_count">
-                    <p><?php _e('Found','cftp_admin'); ?>: <span><?php echo $count_for_pagination; ?> <?php _e('requests','cftp_admin'); ?></span></p>
+                    <p><?php echo sprintf(__('Found %d elements','cftp_admin'), (int)$count_for_pagination); ?>
                 </div>
 
                 <div class="form_results_filter">

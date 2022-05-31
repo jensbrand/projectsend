@@ -467,7 +467,7 @@ class Users
 				$sql_pass->bindParam(':token', $token);
 				$sql_pass->bindParam(':id', $this->state['id'], PDO::PARAM_INT);
 				$sql_pass->execute();
-            
+                
 				/** Send account data by email */
 				$this->notify_user = new \ProjectSend\Classes\Emails;
 				if ($this->notify_account == 1) {
@@ -557,6 +557,14 @@ class Users
         }
 
         $this->password_hashed = $this->hashPassword($this->password);
+
+        // Some fields should not be allowed to be written if the current user is not a client,
+        // as they are meant to be null for system users
+        if ($this->role != 0) {
+            $this->address = null;
+            $this->phone = null;
+            $this->contact = null;
+        }
 
 		if (strlen($this->password_hashed) >= 20) {
 

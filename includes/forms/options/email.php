@@ -16,6 +16,22 @@
 
 <div class="options_divide"></div>
 
+<h3><?php _e('System performance','cftp_admin'); ?></h3>
+
+<div class="form-group">
+    <div class="col-sm-8 col-sm-offset-4">
+        <label for="notifications_send_when_saving_files">
+            <input type="checkbox" value="1" name="notifications_send_when_saving_files" id="notifications_send_when_saving_files" <?php echo (get_option('notifications_send_when_saving_files') == 1) ? 'checked="checked"' : ''; ?> /> <?php _e('Send "New file" email notifications during the file saving process.','cftp_admin'); ?>
+        </label>
+        <p class="field_note">
+            <?php _e('By unchecking this option, notifications are not sent during the file uploading and editing operations which results in much faster page loading and a better user experience.','cftp_admin'); ?><br>
+            <strong><?php _e('Warning: only disable this setting if you have a cron job that takes care of sending the notifications.','cftp_admin'); ?></strong>
+        </p>
+    </div>
+</div>
+
+<div class="options_divide"></div>
+
 <h3><?php _e('Send copies','cftp_admin'); ?></h3>
 
 <div class="form-group">
@@ -59,10 +75,10 @@
 <h3><?php _e('Expiration','cftp_admin'); ?></h3>
 
 <div class="form-group">
-    <label for="notifications_max_tries" class="col-sm-4 control-label"><?php _e('Maximum sending attemps','cftp_admin'); ?></label>
+    <label for="notifications_max_tries" class="col-sm-4 control-label"><?php _e('Maximum sending attempts','cftp_admin'); ?></label>
     <div class="col-sm-8">
         <input type="number" name="notifications_max_tries" id="notifications_max_tries" class="form-control" value="<?php echo get_option('notifications_max_tries'); ?>" min="1" max="10" step="1" required />
-        <p class="field_note"><?php _e('Define how many times will the system attemp to send each notification.','cftp_admin'); ?></p>
+        <p class="field_note"><?php _e('Define how many times the system will attempt to send each notification.','cftp_admin'); ?></p>
     </div>
 </div>
 
@@ -71,6 +87,14 @@
     <div class="col-sm-8">
         <input type="number" name="notifications_max_days" id="notifications_max_days" class="form-control" value="<?php echo get_option('notifications_max_days'); ?>" min="0" max="365" step="1" required />
         <p class="field_note"><?php _e('Notifications older than this will not be sent.','cftp_admin'); ?><br /><strong><?php _e('Set to 0 to disable.','cftp_admin'); ?></strong></p>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="notifications_max_emails_at_once" class="col-sm-4 control-label"><?php _e('Max. emails to send at once','cftp_admin'); ?></label>
+    <div class="col-sm-8">
+        <input type="number" name="notifications_max_emails_at_once" id="notifications_max_emails_at_once" class="form-control" value="<?php echo get_option('notifications_max_emails_at_once'); ?>" min="0" max="10000" step="1" required />
+        <p class="field_note"><?php _e('Sending too many emails at once can lead to issues. If you set up a notifications cron job, you can set this to a convenient, safe amount of emails to attempt to send per run (ie: 20).','cftp_admin'); ?><br /><strong><?php _e('Set to 0 to disable.','cftp_admin'); ?></strong></p>
     </div>
 </div>
 

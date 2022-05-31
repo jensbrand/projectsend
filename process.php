@@ -7,6 +7,18 @@ use ProjectSend\Classes\ActionsLog;
 $allowed_levels = array(9,8,7,0);
 require_once 'bootstrap.php';
 
+require('xsendfile.class.php');
+use mulu\xsendfile;
+
+// set directory for symlinks
+if (xsendfile::setLinkDir(__DIR__ . '/download/'))
+{
+	xsendfile::setLinkDirUri(BASE_URI . 'download/'); // web path to symlink-dir
+	xsendfile::setExpireTime(3600); // symlinks expire in 1h
+	xsendfile::register(); // register as shutdown function
+	xsendfile::runGBC(); // run the gbc
+} 
+
 global $auth;
 global $logger;
 

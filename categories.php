@@ -1,6 +1,6 @@
 <?php
 /**
- * Allows to hide, show or delete the files assigend to the
+ * Allows to hide, show or delete the files assigned to the
  * selected client.
  *
  * @package		ProjectSend
@@ -16,6 +16,7 @@ $page_title = __('Categories administration','cftp_admin');
 $page_id = 'categories_list';
 
 include_once ADMIN_VIEWS_DIR . DS . 'header.php';
+$current_url = get_form_action_with_existing_parameters(basename(__FILE__));
 
 /**
  * Messages set when adding or editing a category
@@ -40,32 +41,32 @@ if ( !empty( $_GET['status'] ) ) {
 /**
  * Apply the corresponding action to the selected categories.
  */
-if ( isset( $_GET['action'] ) ) {
-    if ( $_GET['action'] != 'none' ) {
+if ( isset( $_POST['action'] ) ) {
+    if ( $_POST['action'] != 'none' ) {
         /** Continue only if 1 or more categories were selected. */
-        if ( !empty($_GET['batch'] ) ) {
+        if ( !empty($_POST['batch'] ) ) {
             /**
              * Make a list of categories to avoid individual queries.
              */
-            $selected_categories = $_GET['batch'];
+            $selected_categories = $_POST['batch'];
 
             if (count($selected_categories) < 1 ) {
-                $msg = __('Please select at least one category.','cftp_admin');
-                echo system_message('danger',$msg);
+                $flash->error(__('Please select at least one category.', 'cftp_admin'));
+            } else {
+                switch ($_POST['action']) {
+                    case 'delete':
+                        foreach ($selected_categories as $category_id) {
+                            $category = new \ProjectSend\Classes\Categories();
+                            $category->get($category_id);
+                            $delete_category = $category->delete();
+                        }
+                        
+                        $flash->success(__('The selected categories were deleted.', 'cftp_admin'));
+                    break;
+                }
             }
 
-            switch($_GET['action']) {
-                case 'delete':
-                    foreach ($selected_categories as $category_id) {
-                        $category = new \ProjectSend\Classes\Categories();
-                        $category->get($category_id);
-                        $delete_category = $category->delete();
-                    }
-                    
-                    $msg = __('The selected categories were deleted.','cftp_admin');
-                    echo system_message('success',$msg);
-                    break;
-            }
+            ps_redirect($current_url);
         }
     }
 }
@@ -107,7 +108,7 @@ $form_information = array(
                         );
 
 /** Loading the form in EDIT mode */
-if ( (!empty( $_GET['action'] ) && $_GET['action'] == 'edit' ) or !empty( $_POST['editing_id'] )) {
+if ( (isset( $_GET['form'] ) && $_GET['form'] == 'edit' ) or !empty( $_POST['editing_id'] )) {
     $action				= 'edit';
     $editing			= !empty( $_POST['editing_id'] ) ? $_POST['editing_id'] : $_GET['id'];
     $form_information	= array(
@@ -166,7 +167,7 @@ if ( isset( $_POST['btn_process'] ) ) {
         echo system_message('danger', $msg);
     }
 
-    /** Redirect so the actions are reflected immediatly */
+    /** Redirect so the actions are reflected immediately */
     if ( isset( $redirect ) && $redirect === true ) {
         while (ob_get_level()) ob_end_clean();
         $location = BASE_URI . 'categories.php?status=' . $form_information['redirect_status'];
@@ -184,8 +185,8 @@ if ( isset( $_POST['btn_process'] ) ) {
             </div>
         </div>
 
-        <form action="categories.php" class="form-inline batch_actions" name="selected_categories" id="selected_categories" method="get">
-
+        <form action="<?php echo $current_url; ?>" class="form-inline batch_actions" name="selected_categories" id="selected_categories" method="post">
+            <?php addCsrf(); ?>
             <div class="form_actions_right form-inline">
                 <div class="form_actions">
                     <div class="form_actions_submit">
@@ -194,9 +195,9 @@ if ( isset( $_POST['btn_process'] ) ) {
                             <select name="action" id="action" class="txtfield form-control">
                                 <?php
                                     $actions_options = array(
-                                                            'none'			=> __('Select action','cftp_admin'),
-                                                            'delete'		=> __('Delete','cftp_admin'),
-                                                        );
+                                        'none' => __('Select action','cftp_admin'),
+                                        'delete' => __('Delete','cftp_admin'),
+                                    );
                                     foreach ( $actions_options as $val => $text ) {
                                 ?>
                                         <option value="<?php echo $val; ?>"><?php echo $text; ?></option>
@@ -213,7 +214,7 @@ if ( isset( $_POST['btn_process'] ) ) {
             <div class="clear"></div>
 
             <div class="form_actions_count">
-                <p class="form_count_total"><?php _e('Found','cftp_admin'); ?>: <span><?php echo $get_categories['count']; ?> <?php _e('categories','cftp_admin'); ?></span></p>
+                <?php echo sprintf(__('Found %d elements','cftp_admin'), (int)$get_categories['count']); ?>
             </div>
 
             <div class="clear"></div>
@@ -340,7 +341,7 @@ if ( isset( $_POST['btn_process'] ) ) {
                                                                 'content'		=> '<a href="'. $files_link .'" class="btn btn-sm ' . $files_button . '">' . __('Manage files','cftp_admin') . '</a>',
                                                             ),
                                                         array(
-                                                                'content'		=> '<a href="categories.php?action=edit&id=' . $category["id"] .'" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i><span class="button_label">' . __('Edit','cftp_admin') . '</span></a>'
+                                                                'content'		=> '<a href="categories.php?form=edit&id=' . $category["id"] .'" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i><span class="button_label">' . __('Edit','cftp_admin') . '</span></a>'
                                                             ),
                                                     );
                                 foreach ( $tbody_cells as $cell ) {

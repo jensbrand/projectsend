@@ -34,6 +34,10 @@ $body_class[] = 'menu_hidden';
  */
 require_once INCLUDES_DIR . DS .'core.update.silent.php';
 
+// Run required database upgrades
+$db_upgrade = new \ProjectSend\Classes\DatabaseUpgrade;
+$db_upgrade->upgradeDatabase(false);
+
 /**
  * Call the database update file to see if any change is needed,
  * but only if logged in as a system user.
@@ -69,13 +73,14 @@ password_change_required();
         <header id="header" class="navbar navbar-static-top navbar-fixed-top">
             <ul class="nav pull-left nav_toggler">
                 <li>
-                    <a href="#" class="toggle_main_menu"><i class="fa fa-bars" aria-hidden="true"></i><span><?php _e('Toogle menu', 'cftp_admin'); ?></span></a>
+                    <a href="#" class="toggle_main_menu"><i class="fa fa-bars" aria-hidden="true"></i><span><?php _e('Toggle menu', 'cftp_admin'); ?></span></a>
                 </li>
             </ul>
 
             <div class="navbar-header">
                 <!--<span class="navbar-brand"><a href="<?php echo SYSTEM_URI; ?>" target="_blank"><?php include_once 'assets/img/ps-icon.svg'; ?></a> <?php echo html_output(get_option('this_install_title')); ?></span>-->
                 <span class="navbar-brand"><a href="https://www.wolf-software.de" target="_blank"><img src="<?php echo BASE_URI; ?>img/Dreiecke_24.png"></a> <?php echo html_output(get_option('this_install_title')); ?></span>
+				
             </div>
 
             <ul class="nav pull-right nav_account">

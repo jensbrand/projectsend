@@ -44,7 +44,7 @@ function format_action_log_record($params)
 			break;
 		case 4:
 			$part1 = $affected_account_name;
-			$action_text = __('created a client account for themself.','cftp_admin');
+			$action_text = __('created a client account for themselves.','cftp_admin');
             $formatted = sprintf(__('%s registered as a new client','cftp_admin'), $affected_account_name);
             $type = 'clients';
 			break;
@@ -253,7 +253,14 @@ function format_action_log_record($params)
             $formatted = sprintf(__('%s updated ProjectSend to version %s','cftp_admin'), $owner_user, $part2);
             $type = 'system';
 			break;
-		case 31:
+        case 49:
+            $part1 = $owner_user;
+            $action_text = __('updated the database to version','cftp_admin');
+            $part2 = (isset($details->database_version)) ? $details->database_version : null;
+            $formatted = sprintf(__('%s updated the database to version %s','cftp_admin'), $owner_user, $part2);
+            $type = 'system';
+            break;
+        case 31:
 			$part1 = $owner_user;
             $action_text = __('logged out of the system.','cftp_admin');
             $formatted = sprintf(__('%s logged out of the system','cftp_admin'), $owner_user);

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ProjectSend theme: Default\n"
-"POT-Creation-Date: 2021-12-08 10:54+0100\n"
-"PO-Revision-Date: 2021-12-08 10:55+0100\n"
+"POT-Creation-Date: 2022-05-31 11:00+0200\n"
+"PO-Revision-Date: 2022-05-31 11:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: ProjectSend <contact@projectsend.org>\n"
 "Language: de_DE\n"
@@ -43,58 +43,61 @@ msgstr "Download gezippt"
 msgid "Proceed"
 msgstr "Fortfahren"
 
-#: template.php:91
-msgid "Found"
-msgstr "Gefunden"
+#: template.php:92
+#, php-format
+msgid "Found %d elements"
+msgstr "%d Elemente gefunden"
 
-#: template.php:91
-msgid "files"
-msgstr "Dateien"
-
-#: template.php:101
+#: template.php:102
 msgid "Your search keywords returned no results."
 msgstr "Ihre Suchbegriffe ergaben keine Treffer."
 
-#: template.php:106
+#: template.php:107
 msgid "There are no files available."
 msgstr "Es sind keine Dateien verfügbar."
 
-#: template.php:132
+#: template.php:133
 msgid "Title"
 msgstr "Titel"
 
-#: template.php:135
+#: template.php:136
 msgid "Type"
 msgstr "Typ"
 
-#: template.php:141
+#: template.php:142
 msgid "Description"
 msgstr "Beschreibung"
 
-#: template.php:148
+#: template.php:149
 msgid "Size"
 msgstr "Größe"
 
-#: template.php:155
+#: template.php:156
 msgid "Date"
 msgstr "Datum"
 
-#: template.php:158
+#: template.php:159
 msgid "Expiration date"
 msgstr "Ablaufdatum"
 
-#: template.php:162 template.php:230
+#: template.php:163 template.php:231
 msgid "Preview"
 msgstr "Vorschaubild"
 
-#: template.php:166 template.php:243
+#: template.php:167 template.php:244
 msgid "Download"
 msgstr "Download"
 
-#: template.php:212
+#: template.php:213
 msgid "Never"
 msgstr "Niemals"
 
-#: template.php:239
+#: template.php:240
 msgid "File expired"
 msgstr "Datei abgelaufen"
+
+#~ msgid "Found"
+#~ msgstr "Gefunden"
+
+#~ msgid "files"
+#~ msgstr "Dateien"

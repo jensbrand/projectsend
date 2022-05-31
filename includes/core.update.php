@@ -20,6 +20,10 @@ if (current_role_in($allowed_update)) {
     $update_data = get_latest_version_data();
     $update_data = json_decode($update_data);
 
+    if (empty($update_data)) {
+        return;
+    }
+
     $updates_made = 0;
     $updates_errors = 0;
     $updates_error_messages = array();
@@ -949,7 +953,7 @@ if (current_role_in($allowed_update)) {
 		 * r738 updates
 		 * New columns where added to the downloads table, to
 		 * store the ip and hostname of the user, and a boolean
-		 * fieled set to true for anonymous downloads (public files)
+		 * field set to true for anonymous downloads (public files)
 		 */
 		if ($last_update < 738) {
 			try {
@@ -964,7 +968,7 @@ if (current_role_in($allowed_update)) {
 		
 		/**
 		 * r757 updates
-		 * Add new options that clients can set expiration date when Uploded New files 
+		 * Add new options that clients can set expiration date when Uploaded New files 
 		 */
 		 
 		if ($last_update < 757) {
@@ -1375,8 +1379,47 @@ if (current_role_in($allowed_update)) {
 			
             $statement = $dbh->query("UPDATE `" . TABLE_FILES . "` SET original_url = url WHERE original_url IS NULL");
             $updates_made++;
-
 		}
+
+        /**
+		 * r1372 updates
+		 * A new database table was added.
+		 * Failed log in attempts are recorded to throttle future requests
+		 */
+		if ($last_update < 1372) {
+			if ( !tableExists( TABLE_LOGINS_FAILED ) ) {
+				$query = "
+				CREATE TABLE IF NOT EXISTS `".TABLE_LOGINS_FAILED."` (
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `ip_address` VARCHAR(60) NOT NULL,
+                  `username` VARCHAR(60) NOT NULL,
+				  `attempted_at` datetime NOT NULL,
+				  PRIMARY KEY (`id`)
+				) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+				";
+				$statement = $dbh->prepare($query);
+				$statement->execute();
+
+				$updates_made++;
+			}
+		}
+
+        /**
+		 * r1375 updates
+		 * Added database version number
+		 */
+		if ($last_update < 1375) {
+			$new_database_values = array(
+                'database_version' => INITIAL_DATABASE_VERSION,
+            );
+			
+			foreach($new_database_values as $row => $value) {
+				if ( add_option_if_not_exists($row, $value) ) {
+					$updates_made++;
+				}
+			}
+		}
+
 
         /** Update the database */
 		$statement = $dbh->prepare("UPDATE " . TABLE_OPTIONS . " SET value = :version WHERE name='last_update'");

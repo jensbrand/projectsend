@@ -9,8 +9,10 @@
 if (defined('TRY_INSTALL')) {
 	$timestamp = time();
 	$current_version = substr(CURRENT_VERSION, 1);
+    $database_version = INITIAL_DATABASE_VERSION;
 	$now = date('d-m-Y');
 	$expiry_default = date('Y') + 1 . "-01-01 00:00:00";
+    $timezone = date_default_timezone_get();
 
 	$install_queries = array(
 		'0' =>  array(
@@ -245,13 +247,14 @@ if (defined('TRY_INSTALL')) {
 								('this_install_title', :title),
 								('selected_clients_template', 'default'),
 								('logo_thumbnails_folder', '/assets/img/custom/thumbs'),
-								('timezone', 'America/Argentina/Buenos_Aires'),
+								('timezone', '".$timezone."'),
 								('timeformat', 'd/m/Y'),
-								('allowed_file_types', '7z,ace,ai,avi,bin,bmp,bz2,cdr,doc,docm,docx,eps,fla,flv,gif,gz,gzip,htm,html,iso,jpeg,jpg,mp3,mp4,mpg,odt,oog,ppt,pptx,pptm,pps,ppsx,pdf,png,psd,rar,rtf,tar,tif,tiff,tgz,txt,wav,xls,xlsm,xlsx,xz,zip'),
+								('allowed_file_types', '7z,ace,ai,avi,bin,bmp,bz2,cdr,csv,doc,docm,docx,eps,fla,flv,gif,gz,gzip,htm,html,iso,jpeg,jpg,mp3,mp4,mpg,odt,oog,ppt,pptx,pptm,pps,ppsx,pdf,png,psd,rar,rtf,tar,tif,tiff,tgz,txt,wav,xls,xlsm,xlsx,xz,zip'),
 								('logo_filename', ''),
 								('admin_email_address', :email),
 								('clients_can_register', '0'),
 								('last_update', :version),
+                                ('database_version', :db_version),
 								('mail_system_use', 'mail'),
 								('mail_smtp_host', ''),
 								('mail_smtp_port', ''),
@@ -342,13 +345,16 @@ if (defined('TRY_INSTALL')) {
 								('public_listing_show_all_files', '0'),
                                 ('public_listing_use_download_link', '0'),
                                 ('svg_show_as_thumbnail', '0'),
-                                ('pagination_results_per_page', '10')
+                                ('pagination_results_per_page', '10'),
+                                ('login_ip_whitelist', ''),
+                                ('login_ip_blacklist', '')
 								",
 					'params' => array(
 										':base_uri'	=> $base_uri,
 										':title'	=> $install_title,
 										':email'	=> $admin_email,
 										':version'	=> $current_version,
+                                        ':db_version' => $database_version,
 										':from'		=> $install_title,
 										':now'		=> $now,
 								),
@@ -407,6 +413,19 @@ if (defined('TRY_INSTALL')) {
                 `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
                 `updated_at` TIMESTAMP NULL DEFAULT NULL,
                 FOREIGN KEY (`user_id`) REFERENCES '.TABLE_USERS.'(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+                PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+            ',
+            'params' => array(),
+        ),
+
+        '17' => array(
+            'table' => TABLE_LOGINS_FAILED,
+            'query' => 'CREATE TABLE IF NOT EXISTS `'.TABLE_LOGINS_FAILED.'` (
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `ip_address` VARCHAR(60) NOT NULL,
+                `username` VARCHAR(60) NOT NULL,
+                `attempted_at` datetime NOT NULL,
                 PRIMARY KEY (`id`)
                 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
             ',

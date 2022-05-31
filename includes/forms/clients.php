@@ -50,7 +50,7 @@ switch ($clients_form_type) {
 			$group_label = __('Request access to groups','cftp_admin');
 		}
 		break;
-	/** A client is editing his profile */
+	/** A client is editing their profile */
 	case 'edit_client_self':
 		$submit_value = __('Update account','cftp_admin');
 		$disable_user = true;
@@ -70,7 +70,7 @@ switch ($clients_form_type) {
 ?>
 
 <form action="<?php echo html_output($form_action); ?>" name="client_form" id="client_form" method="post" class="form-horizontal" data-form-type="<?php echo $clients_form_type; ?>">
-    <input type="hidden" name="csrf_token" value="<?php echo getCsrfToken(); ?>" />
+    <?php addCsrf(); ?>
 
 	<div class="form-group">
 		<label for="name" class="col-sm-4 control-label"><?php _e('Name','cftp_admin'); ?></label>
@@ -167,7 +167,7 @@ switch ($clients_form_type) {
 			
 			$selected_groups	= ( !empty( $found_groups ) ) ? $found_groups : '';
 			$my_current_groups	= array();
-			/** Dirty and awful quick test, mark as selected the current groups which have requests for a client that's editing his own account */
+			/** Dirty and awful quick test, mark as selected the current groups which have requests for a client that's editing their own account */
 			if ( isset( $override_groups_list ) ) {
 				$selected_groups = $override_groups_list;
 				if ( !empty( $found_groups ) ) {
@@ -274,17 +274,7 @@ switch ($clients_form_type) {
 
 	<?php
 		if ( $clients_form_type == 'new_client_self' ) {
-			if ( defined('RECAPTCHA_AVAILABLE') ) {
-	?>
-				<div class="form-group">
-					<label class="col-sm-4 control-label"><?php _e('Verification','cftp_admin'); ?></label>
-					<div class="col-sm-8">
-						<div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY; ?>"></div>
-					</div>
-				</div>
-	<?php
-			}
-			
+            recaptcha2RenderWidget();
 		}
 	?>
 

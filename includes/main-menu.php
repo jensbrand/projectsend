@@ -227,6 +227,10 @@ if ( current_role_in( array( 9,8,7 ) ) )
 													'label'	=> __('External Login', 'cftp_admin'),
 													'link'	=> 'options.php?section=external_login',
 												),
+												array(
+													'label'	=> __('Scheduled tasks (cron)', 'cftp_admin'),
+													'link'	=> 'options.php?section=cron',
+												),
 											),
 							);
 
@@ -296,8 +300,16 @@ if ( current_role_in( array( 9,8,7 ) ) )
                                                 'link'	=> 'actions-log.php',
                                             ),
                                             array(
+                                                'label'	=> __('Cron log', 'cftp_admin'),
+                                                'link'	=> 'cron-log.php',
+                                            ),
+                                            array(
                                                 'label'	=> __('Test email configuration', 'cftp_admin'),
                                                 'link'	=> 'email-test.php',
+                                            ),
+                                            array(
+                                                'label'	=> __('Unblock IP', 'cftp_admin'),
+                                                'link'	=> 'unblock-ip.php',
                                             ),
                                         ),
 							);
@@ -345,8 +357,7 @@ else
 /**
  * Build the menu
  */
-$current_filename = basename($_SERVER['REQUEST_URI']);
-
+$current_filename = parse_url(basename($_SERVER['REQUEST_URI']));
 $menu_output = "
     <div class='main_side_menu'>
         <ul class='main_menu' role='menu'>\n";
@@ -388,7 +399,7 @@ foreach ( $items as $item )
 				}
 				else
 				{
-					$sub_active		= ( $subitem['link'] == $current_filename ) ? 'current_page' : '';
+					$sub_active		= ( $subitem['link'] == $current_filename['path'] ) ? 'current_page' : '';
 					$format			= "\t\t<li class='%s'>\n\t\t\t<a href='%s'>%s<span class='submenu_label'>%s%s</span></a>\n\t\t</li>\n";
 					$menu_output 	.= sprintf( $format, $sub_active, BASE_URI . $subitem['link'], $icon, $subitem['label'], $badge );
 				}

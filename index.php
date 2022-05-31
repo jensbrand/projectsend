@@ -17,19 +17,34 @@
 $allowed_levels = array(9,8,7,0);
 require_once 'bootstrap.php';
 
+global $dbh;
+global $auth;
+global $flash;
+global $bfchecker;
+
 $page_title = __('Log in','cftp_admin');
 
 $body_class = array('login');
 $page_id = 'login';
-global $auth;
+
+$current_ip = get_client_ip();
+
+$bfstatus = $bfchecker->getLoginStatus(get_client_ip());
+switch ($bfstatus['status']) {
+    case 'error_403':
+        $flash->clear(); // @todo hack, since flash messages after the last error should not be retained
+        exitWithErrorCode(403);
+    break;
+}
 
 if ($_POST) {
     switch ($_POST['do']) {
         default:
-            header("Location: ".PAGE_STATUS_CODE_403);
-            exit;
+            exitWithErrorCode(403);
         break;
         case 'login':
+            recaptcha2ValidateRequest();
+
             $login = $auth->authenticate($_POST['username'], $_POST['password']);
             $decoded = json_decode($login);
             if ($decoded->status == 'success') {
@@ -48,7 +63,21 @@ if ($_POST) {
                 header("Location: ".$decoded->location);
                 exit;
             } else {
-                $login_error = $decoded->type;
+                $flash->error($auth->getLoginError($decoded->type));
+
+                switch ($bfstatus['status']) {
+                    case 'delay':
+                        if (is_numeric($bfstatus['message'])) {
+                            $flash->error('<div id="message_countdown">'.sprintf(__('Please wait %s seconds before attempting to log in again.', 'cftp_admin'), '<span class="seconds_countdown">'.$bfstatus['message'].'</span>').'</div>');
+                            if ($bfstatus['message'] > 150) {
+                                $flash->error(sprintf(__('Warning: You are about to reach the failed attempts limit, which will completely block your access for a few minutes.', 'cftp_admin'), $bfstatus['message']));
+                            }
+                        }
+                    break;
+                }
+
+                header("Location: index.php");
+                exit;
             }
             $auth->setLanguage($_POST['language']);
         break;
@@ -78,9 +107,8 @@ include_once ADMIN_VIEWS_DIR . DS . 'header-unlogged.php';
         <div class="white-box-interior">
             <div class="ajax_response">
                 <?php
-                    /** Coming from an external form */
-                    if ( isset( $login_error ) ) {
-                        echo system_message('danger', $auth->getLoginError($login_error));
+                    if ($flash->hasMessages()) {
+                        echo $flash;
                     }
                 ?>
             </div>

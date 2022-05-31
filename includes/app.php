@@ -12,6 +12,33 @@
 session_start();
 
 /**
+ * Check if the personal configuration file exists
+ * Otherwise will start a configuration page
+ *
+ * @see sys.config.sample.php
+ */
+if ( !file_exists(ROOT_DIR.'/includes/sys.config.php') ) {
+    header("Cache-control: private");
+    $_SESSION = array();
+    session_destroy();
+    session_regenerate_id(true);
+
+    if ( !defined( 'IS_MAKE_CONFIG' ) ) {
+        // the following script returns only after the creation of the configuration file
+        if ( defined('IS_INSTALL') ) {
+            header('Location:make-config.php');
+            exit;
+        }
+
+        header('Location:install/make-config.php');
+        exit;
+    }
+}
+
+// Load custom config file
+include_once ROOT_DIR.'/includes/sys.config.php';
+
+/**
  * Define the system name, and the information that will be used
  * on the footer blocks.
  *
@@ -25,7 +52,7 @@ define('DONATIONS_URL','https://www.projectsend.org/donations/');
  * Current version.
  * Updated only when releasing a new downloadable complete version.
  */
-define('CURRENT_VERSION', 'r1335');
+define('CURRENT_VERSION', 'r1420');
 
 /**
  * Required software versions
@@ -41,11 +68,11 @@ define('REQUIRED_VERSION_MYSQL', '5.0');
 define('PROTOCOL', empty($_SERVER['HTTPS'])? 'http' : 'https');
 
 /**
- * DEBUG constant effects:
- * - Changes the error_reporting php value
- * - Enables the PDOEX extension (on the database class) to count queries
+ * DEBUG
  */
-define('DEBUG', false);
+if (!defined("DEBUG")) {
+    define('DEBUG', false);
+}
 
 /**
  * IS_DEV is set to true during development to show a sitewide remainder
@@ -91,32 +118,13 @@ define('NEWS_FEED_URI','https://www.projectsend.org/serve/news');
 define('UPDATES_FEED_URI','https://projectsend.org/serve/versions');
 
 /**
- * Check if the personal configuration file exists
- * Otherwise will start a configuration page
- *
- * @see sys.config.sample.php
- */
-if ( !file_exists(ROOT_DIR.'/includes/sys.config.php') ) {
-    if ( !defined( 'IS_MAKE_CONFIG' ) ) {
-        // the following script returns only after the creation of the configuration file
-        if ( defined('IS_INSTALL') ) {
-            header('Location:make-config.php');
-        }
-        else {
-            header('Location:install/make-config.php');
-        }
-    }
-}
-else {
-    include_once ROOT_DIR.'/includes/sys.config.php';
-}
-
-/**
  * Database connection driver
  */
 if (!defined('DB_DRIVER')) {
     define('DB_DRIVER', 'mysql');
 }
+
+define('INITIAL_DATABASE_VERSION', '2022040101');
 
 /**
  * Define the tables names
@@ -139,6 +147,8 @@ define('TABLE_CATEGORIES', TABLES_PREFIX . 'categories');
 define('TABLE_CATEGORIES_RELATIONS', TABLES_PREFIX . 'categories_relations');
 define('TABLE_LOG', TABLES_PREFIX . 'actions_log');
 define('TABLE_PASSWORD_RESET', TABLES_PREFIX . 'password_reset');
+define('TABLE_LOGINS_FAILED', TABLES_PREFIX . 'logins_failed');
+define('TABLE_CRON_LOG', TABLES_PREFIX . 'cron_log');
 
 $original_basic_tables = array(
     TABLE_FILES,
@@ -162,6 +172,8 @@ $all_system_tables = array(
     'actions_log',
     'password_reset',
     'user_meta',
+    'logins_failed',
+    'cron_log',
 );
 
 /**
@@ -212,6 +224,7 @@ define('ASSETS_LIB_DIR', ASSETS_DIR . DS . 'lib');
 define('CORE_LANG_DIR', ROOT_DIR . DS . 'lang');
 define('INCLUDES_DIR', ROOT_DIR . DS . 'includes');
 define('FORMS_DIR', INCLUDES_DIR . DS . 'forms');
+define('UPGRADES_DIR', INCLUDES_DIR . DS . 'upgrades');
 define('ADMIN_VIEWS_DIR', ROOT_DIR);
 define('EMAIL_TEMPLATES_DIR', ADMIN_VIEWS_DIR . DS . 'emails');
 define('TEMPLATES_DIR', ROOT_DIR . DS . 'templates');
@@ -250,6 +263,9 @@ define('HASH_PORTABLE', false);
 
 /** ZIP files */
 define('ZIP_TMP_EXPIRATION_TIME', 172800); // Delete zip files from the temp folder older than this value (in seconds)
+
+/** cURL timeout */
+define('CURL_TIMEOUT_SECONDS', 5);
 
 /**
  * Footable

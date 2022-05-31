@@ -13,6 +13,11 @@ function getCsrfToken()
     return $_SESSION['csrf_token'];
 }
 
+function addCsrf()
+{
+    echo '<input type="hidden" name="csrf_token" value="'.getCsrfToken().'" />';
+}
+
 /**
  * Validates the send csrf token with a stable string comparison algorithm.
  * Do not optimize for speed!!!
@@ -25,6 +30,5 @@ function validateCsrfToken()
 }
 
 if (!defined('IS_INSTALL') && !defined('FILE_UPLOADING') && $_POST && !validateCsrfToken()) {
-    header("Location: ".PAGE_STATUS_CODE_403);
-    exit;
+    exitWithErrorCode(403);
 }

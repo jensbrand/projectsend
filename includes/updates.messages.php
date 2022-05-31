@@ -5,8 +5,13 @@
  * @package		ProjectSend
  * @subpackage	Updates
  */
+    if (!empty($db_upgrade)) {
+        if (!empty($db_upgrade->getAppliedUpdates())) {
+            $updates_made = 1;
+        };
+    }
 
-	// If any update was made to the database structure, show the message
+    // If any update was made to the database structure, show the message
 	if (isset( $updates_made ) ) {
 		if ( $updates_made > 0 ) {
 ?>
